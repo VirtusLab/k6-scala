@@ -1,0 +1,21 @@
+pluginManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    gradlePluginPortal()
+    mavenLocal()
+  }
+}
+
+dependencyResolutionManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    mavenLocal()
+  }
+}
+
+rootProject.name = 'k6-scala'
+
+include ':helloworld'
+apply from: 'helloworld/settings-names.gradle'
