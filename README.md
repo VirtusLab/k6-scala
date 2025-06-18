@@ -7,7 +7,7 @@ Created as part of a blog post project to explore load testing from Scala, this 
 
 ## What's Included
 
-### 🔹 Scala.js Facades for k6 Modules
+### Scala.js Facades for k6 Modules
 - [`k6`](https://k6.io/docs/javascript-api/k6/)
 - [`k6/http`](https://k6.io/docs/javascript-api/k6-http/)
 - [`k6/data`](https://k6.io/docs/javascript-api/k6-data/)
