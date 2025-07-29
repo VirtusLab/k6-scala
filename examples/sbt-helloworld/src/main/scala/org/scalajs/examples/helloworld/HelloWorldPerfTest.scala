@@ -1,9 +1,7 @@
 package org.scalajs.examples.helloworld
 
 import scala.scalajs.js.annotation._
-import com.github.wiacekm.scalajs.k6.http
-import com.github.wiacekm.scalajs.k6.http._
-import com.github.wiacekm.scalajs.k6._
+import org.virtuslab.scalajs.k6.http
 import scala.concurrent.duration._
 
 object HelloWorldPerfTest {
