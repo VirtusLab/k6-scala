@@ -1,9 +1,10 @@
-package com.github.wiacekm.scalajs.k6.utils
+package k6.utils
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import org.virtuslab.scalajs.k6
+
 import scala.concurrent.duration._
-import DurationConverters._
 
 class DurationToK6Spec extends AnyFlatSpec with Matchers {
 

@@ -1,13 +1,13 @@
 //> using scala "3.5.0"
 //> using jsVersion "1.18.1"
 //> using platform scala-js
-//> using dep "org.scalajs::k6-scala::0.0.1-SNAPSHOT"
+//> using dep "org.virtuslab::k6-scala::dev"
 package example
 
 import scala.scalajs.js.annotation.*
-import com.github.wiacekm.scalajs.k6.http
-import com.github.wiacekm.scalajs.k6.http.*
-import com.github.wiacekm.scalajs.k6.*
+import org.virtuslab.scalajs.k6.http
+import http.*
+import org.virtuslab.scalajs.k6.*
 import scala.concurrent.duration.*
 
 object K6ScalaExample {

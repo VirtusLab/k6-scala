@@ -31,6 +31,6 @@ def exampleProject(id: String, dir: String) = Project(id, file(dir))
       }
     },
     libraryDependencies ++= Seq(
-      "org.scalajs" %%% "k6-scala" % "0.0.1-SNAPSHOT"
+      "org.virtuslab" %%% "k6-scala" % "dev"
     )
   )

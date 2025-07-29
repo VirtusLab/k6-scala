@@ -18,7 +18,7 @@ link {
 dependencies {
   implementation  "org.scala-js:scalajs-library_${scalaVersion.binary2}:$scalaJsVersion"
   scalajs         "org.scala-js:scalajs-linker_${scalaVersion.binary2}:$scalaJsVersion"
-  implementation("org.scalajs:k6-scala_3:0.0.1-SNAPSHOT")
+  implementation("org.virtuslab:k6-scala_3:dev")
 }
 
 group = 'example'

@@ -13,7 +13,7 @@ object helloworld extends ScalaJSModule {
   override def scalaJSVersion = "1.18.1"
 
   override def ivyDeps: Target[Loose.Agg[Dep]] = super.ivyDeps() ++ Agg(
-    ivy"org.scalajs::k6-scala::0.0.1-SNAPSHOT".withDottyCompat(projectScalaVersion)
+    ivy"org.virtuslab::k6-scala::dev".withDottyCompat(projectScalaVersion)
   )
   override def moduleKind = ModuleKind.ESModule
   override def moduleSplitStyle = ModuleSplitStyle.FewestModules

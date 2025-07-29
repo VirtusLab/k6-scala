@@ -11,7 +11,8 @@ Created as part of a blog post project to explore load testing from Scala, this 
 - [`k6`](https://k6.io/docs/javascript-api/k6/)
 - [`k6/http`](https://k6.io/docs/javascript-api/k6-http/)
 - [`k6/data`](https://k6.io/docs/javascript-api/k6-data/)
-- [`k6/options`](https://k6.io/docs/using-k6/options/)
+- [`k6/options`](https://k6.io/docs/using-k6/k6-options/)
+- [`k6/timers`](https://k6.io/docs/using-k6/k6-timers/)
 
 ### Basic Examples
 - Load testing scenarios adapted from the official [k6.io examples](https://grafana.com/docs/k6/latest/examples/)
