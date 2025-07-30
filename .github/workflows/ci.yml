@@ -5,8 +5,10 @@ on:
     branches:
       - main
   push:
-    tags-ignore:
+    tags:
       - v*
+    branches:
+      - main
 
 jobs:
 
