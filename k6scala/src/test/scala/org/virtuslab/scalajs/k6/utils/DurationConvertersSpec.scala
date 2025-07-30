@@ -1,8 +1,8 @@
-package k6.utils
+package org.virtuslab.scalajs.k6.utils
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import org.virtuslab.scalajs.k6
+import org.virtuslab.scalajs.k6.utils.DurationConverters._
 
 import scala.concurrent.duration._
 
