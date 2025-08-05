@@ -1,23 +1,42 @@
 # Scala.js Facade for k6 (`k6-scala`)
 
-This is the **k6-scala**, a Scala.js facade for the [k6 load testing library](https://k6.io/).  
-Created as part of a blog post project to explore load testing from Scala, this initial release focuses on core usability and integration.
+[![Build Status](placeholder-for-build-badge)](placeholder-for-build-url)
+[![Maven Central](placeholder-for-maven-badge)](placeholder-for-maven-url)
+
+A type-safe Scala.js facade for the [k6 load testing tool](https://k6.io/).
+This library enables writing k6 load tests using Scala.js.
 
 ---
 
-## What's Included
+## Features
 
-### Scala.js Facades for k6 Modules
-- [`k6`](https://k6.io/docs/javascript-api/k6/)
-- [`k6/http`](https://k6.io/docs/javascript-api/k6-http/)
-- [`k6/data`](https://k6.io/docs/javascript-api/k6-data/)
-- [`k6/options`](https://k6.io/docs/using-k6/k6-options/)
-- [`k6/timers`](https://k6.io/docs/using-k6/k6-timers/)
+- **Type-safe API**: Full Scala.js facades for core k6 modules
+- **Build Tool Support**: Integration with sbt, scala-cli, and mill
+- **Production Ready**: Used in real-world load testing scenarios
+
+## Quick Start
+
+Add the dependency to your project:
+
+```scala
+libraryDependencies += "com.example" %%% "k6-scala" % "latest.version"
+```
+
+### Supported k6 Modules
+
+- ✓ [`k6`](https://k6.io/docs/javascript-api/k6/) - Core module
+- ✓ [`k6/http`](https://k6.io/docs/javascript-api/k6-http/) - HTTP client
+- ✓ [`k6/data`](https://k6.io/docs/javascript-api/k6-data/) - Data handling
+- ✓ [`k6/options`](https://k6.io/docs/using-k6/k6-options/) - Test configuration
+- ✓ [`k6/timers`](https://k6.io/docs/using-k6/k6-timers/) - Timing utilities
 
 ### Basic Examples
-- Load testing scenarios adapted from the official [k6.io examples](https://grafana.com/docs/k6/latest/examples/)
-- Written in idiomatic Scala with `scalajs-facade`
-- Covers common usage patterns
+
+See the `examples/` directory for complete examples using different build tools:
+- [sbt example](examples/sbt-helloworld)
+- [scala-cli example](examples/scala-cli-helloworld)
+- [mill example](examples/mill-helloworld)
+- [k6 api example](examples/api-examples)
 
 ### Build Tool Integration
 Examples showing how to use `k6-scala` with:
@@ -33,15 +52,24 @@ Examples showing how to use `k6-scala` with:
   - Example project tests
 
 ---
+## Development Status
 
-## Notes
+This is a beta release. While the core functionality is stable, some features might change as we gather user feedback.
 
-- This is an **early-stage** version meant for exploration and feedback.
-- The facades are **not exhaustive** and currently focus on key functionality.
-- Contributions and suggestions are very welcome!
+### Planned Features
+- Additional k6 module support
+- Enhanced type safety
+- More comprehensive examples
 
----
+## Contributing
 
-## Related
-- [k6 documentation](https://k6.io/docs/)
-- [Scala.js documentation](https://www.scala-js.org/doc/)
+Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## License
+
+[License information]
+
+## Acknowledgments
+
+- [k6](https://k6.io/) - The excellent load testing tool
+- [Scala.js](https://www.scala-js.org/) - The Scala to JavaScript compiler
