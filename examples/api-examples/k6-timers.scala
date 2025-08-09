@@ -6,6 +6,7 @@ package example
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
+import org.virtuslab.scalajs.k6.execution.*
 import org.virtuslab.scalajs.k6.timers.*
 import org.virtuslab.scalajs.k6.*
 import scala.concurrent.duration.*
@@ -25,5 +26,6 @@ object Example {
       },
       2.seconds
     )
+    println(s"secnario name is: ${Execution.scenario.name}")
   }
 }

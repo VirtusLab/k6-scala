@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
+import d from 'k6/execution';
 
 export const options = {
   iterations: 1000,
@@ -12,5 +13,5 @@ export default function () {
 
   // Sleep for 1 second to simulate real-world usage
   sleep(1)
-  println("print statement");
+  console.log("print statement");
 }
