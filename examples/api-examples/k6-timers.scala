@@ -15,9 +15,7 @@ object Example {
   @JSExportTopLevel(JSImport.Default)
   def main(): Unit = {
     var timeoutId = null.asInstanceOf[TimerId]
-    val intervalId = setInterval(
-      println("This runs every 200ms"),
-      200.milliseconds)
+    val intervalId = setInterval(println("This runs every 200ms"), 200.milliseconds)
     timeoutId = setTimeout(
       {
         println("This runs after 2s")

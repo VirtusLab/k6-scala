@@ -1,4 +1,3 @@
-
 import mill._
 import mill.api.Loose
 import mill.scalalib._
@@ -20,13 +19,14 @@ object helloworld extends ScalaJSModule {
 
   override def sources = T.sources {
     println(millSourcePath)
-   Seq(millSourcePath / "src").map(PathRef(_))
+    Seq(millSourcePath / "src").map(PathRef(_))
   }
 
   def runK6test() = T.command {
     val jsFilePath: os.Path = fastLinkJS().dest.path / "main.js"
     println(s"Using JS output: $jsFilePath")
-    val exitCode = os.proc("k6", "run", jsFilePath).call(stdout = os.Inherit, stderr = os.Inherit).exitCode
+    val exitCode =
+      os.proc("k6", "run", jsFilePath).call(stdout = os.Inherit, stderr = os.Inherit).exitCode
     if (exitCode != 0) {
       throw new Exception("k6 failed!")
     }

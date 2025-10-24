@@ -11,12 +11,12 @@ object HelloWorldPerfTest {
     val url: URL = "https://test.k6.io"
     println("test print")
     // val response = http.get(url)
-  //   sleep(1.second)
-  //   check(
-  //     response,
-  //     Checkers(
-  //       "status is 200" -> Check[Response](r => r.status == 200)
-  //     )
-  //   )
+    //   sleep(1.second)
+    //   check(
+    //     response,
+    //     Checkers(
+    //       "status is 200" -> Check[Response](r => r.status == 200)
+    //     )
+    //   )
   }
 }

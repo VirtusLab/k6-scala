@@ -7,7 +7,12 @@ import scala.scalajs.js.annotation._
 @JSImport("k6/http", JSImport.Namespace)
 private[http] object Http extends js.Object {
   val url: js.Function2[js.Array[String], js.Array[Any], HttpURL] = js.native
-  def asyncRequest(method: HttpMethodType, url: URL, body: BodyOpt, params: ParamsOpt): Response =
+  def asyncRequest(
+      method: HttpMethodType,
+      url: URL,
+      body: BodyOpt,
+      params: ParamsOpt
+  ): js.Promise[Response] =
     js.native
   def cookieJar(): CookieJar = js.native
   def del(url: URL, body: BodyOpt, params: ParamsOpt): Response = js.native
