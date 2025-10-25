@@ -18,7 +18,6 @@ ThisBuild / scmInfo := Some(
     "scm:git:git@github.com:VirtusLab/k6-scala.git"
   )
 )
-ThisBuild / publishMavenStyle := true
 
 // Detect a custom tag/property, e.g., -Drelease=dev
 lazy val releaseTag = sys.props.get("release")
@@ -40,7 +39,7 @@ lazy val commonSettings = Seq(
 lazy val k6scala: Project =
   Project(id = "k6scala", base = file("k6scala"))
     .enablePlugins(ScalaJSBundlerPlugin)
-    .settings(commonSettings: _*)
+    .settings(commonSettings ++ crossCompileSettings("k6scala") : _*)
 
 lazy val publishLocalDev = taskKey[Unit]("Publish local version with dev suffix")
 
@@ -64,3 +63,31 @@ lazy val root = Project("root", file("."))
   .settings(commonSettings)
   .dependsOn(k6scala)
   .aggregate(k6scala)
+
+def crossCompileSettings(module: String) = 
+  Seq(
+    Compile / unmanagedSourceDirectories += {
+      val sharedSourceDir = (ThisBuild / baseDirectory).value / s"$module/src/main"
+      val data = CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((3, _)) =>
+          sharedSourceDir / "scala-3"
+        case Some((2, 13)) =>
+          sharedSourceDir / "scala-2.13"
+        case _ =>
+          sharedSourceDir / "scala-2.12"
+      }
+      println(data)
+      data
+    },
+    Test / unmanagedSourceDirectories += {
+      val sharedSourceDir = (ThisBuild / baseDirectory).value / s"$module/src/test"
+      CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((3, _)) =>
+          sharedSourceDir / "scala-3"
+        case Some((2, 13)) =>
+          sharedSourceDir / "scala-2.13"
+        case _ =>
+          sharedSourceDir / "scala-2.12"
+      }
+    }
+  )

@@ -5,6 +5,7 @@ import scala.scalajs.js.|
 import js.JSConverters._
 import scala.scalajs.js.typedarray._
 import org.virtuslab.scalajs.converters.FromJSPromise
+import org.virtuslab.scalajs.k6.http.AsyncRequest
 
 package object http {
   type BodyOpt = js.UndefOr[String | js.Object | ArrayBuffer]
@@ -19,10 +20,7 @@ package object http {
       url: URL,
       body: Option[String] = None, // TODO add other formats
       params: Option[Params] = None
-  ): F[Response] =
-    summon[FromJSPromise[F]](
-      Http.asyncRequest(method.toJSType, url, body.orUndefined, params.orUndefined)
-    )
+  ): F[Response] = AsyncRequest.asyncRequest(method, url, body, params)
   def cookieJar(): CookieJar =
     Http.cookieJar()
   def del(url: URL, body: Option[String] = None, params: Option[Params] = None): Response =
