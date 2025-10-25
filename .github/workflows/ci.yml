@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scalaversion: ["2.12.10", "2.13.16", "3.3.6", "3.5.0"]
+        scalaversion: ["2.12.10", "2.13.17", "3.3.6"]
     steps:
 
       - uses: actions/checkout@v4
