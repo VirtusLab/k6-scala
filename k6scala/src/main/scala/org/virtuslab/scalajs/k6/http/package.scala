@@ -3,7 +3,6 @@ package org.virtuslab.scalajs.k6
 import scala.scalajs.js
 import scala.scalajs.js.|
 import js.JSConverters._
-import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.typedarray._
 import org.virtuslab.scalajs.converters.FromJSPromise
 import org.virtuslab.scalajs.k6.http.AsyncRequest
