@@ -1,2 +1,5 @@
-k6-timers.js
-k6-timers.js.map
+*.js
+*.js.map
+.scala-build/
+.bsp/
+target/
