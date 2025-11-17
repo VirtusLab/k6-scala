@@ -23,7 +23,7 @@ trait Options extends js.Object {
   def httpDebug: js.UndefOr[String] = js.native
   def insecureSkipTLSVerify: js.UndefOr[Boolean] = js.native
   def iterations: js.UndefOr[Int] = js.native
-  def linger: js.UndefOr[Int] = js.native
+  def linger: js.UndefOr[Boolean] = js.native
   def maxRedirects: js.UndefOr[Int] = js.native
   def minIterationDuration: js.UndefOr[String] = js.native
   def noConnectionReuse: js.UndefOr[Boolean] = js.native
@@ -66,7 +66,7 @@ object Options {
       httpDebug: Option[String] = None,
       insecureSkipTLSVerify: Option[Boolean] = None,
       iterations: Option[Int] = None,
-      linger: Option[Int] = None,
+      linger: Option[Boolean] = None,
       maxRedirects: Option[Int] = None,
       minIterationDuration: Option[String] = None,
       noConnectionReuse: Option[Boolean] = None,

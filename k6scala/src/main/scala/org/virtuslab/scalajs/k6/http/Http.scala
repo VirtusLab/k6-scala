@@ -14,6 +14,7 @@ private[http] object Http extends js.Object {
       params: ParamsOpt
   ): js.Promise[Response] =
     js.native
+  def batch(requests: BatchRequests): BatchResponses = js.native
   def cookieJar(): CookieJar = js.native
   def del(url: URL, body: BodyOpt, params: ParamsOpt): Response = js.native
   def file(data: String, filename: js.UndefOr[String], contentType: js.UndefOr[String]): FileData =
@@ -24,6 +25,13 @@ private[http] object Http extends js.Object {
   def patch(url: URL, body: BodyOpt, params: ParamsOpt): Response = js.native
   def post(url: URL, body: BodyOpt, params: ParamsOpt): Response = js.native
   def put(url: URL, body: BodyOpt, params: ParamsOpt): Response = js.native
+  def request(
+      method: HttpMethodType,
+      url: URL,
+      body: BodyOpt,
+      params: ParamsOpt
+  ): Response=
+    js.native
 }
 
 trait HttpMethodType extends js.Any

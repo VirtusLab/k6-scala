@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "k6-scala-metals": {
+      "url": "http://localhost:53003/sse"
+    }
+  }
+}
