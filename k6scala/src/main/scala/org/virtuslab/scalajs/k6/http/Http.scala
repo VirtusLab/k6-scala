@@ -2,6 +2,7 @@ package org.virtuslab.scalajs.k6.http
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
+import org.virtuslab.scalajs.k6.http.Batch._
 
 @js.native
 @JSImport("k6/http", JSImport.Namespace)
@@ -30,7 +31,7 @@ private[http] object Http extends js.Object {
       url: URL,
       body: BodyOpt,
       params: ParamsOpt
-  ): Response=
+  ): Response =
     js.native
 }
 

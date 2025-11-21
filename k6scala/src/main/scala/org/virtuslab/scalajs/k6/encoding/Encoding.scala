@@ -22,10 +22,10 @@ object Encoding extends js.Object {
    * Base64 decode a string to string format.
    * @param input The string to base64 decode.
    * @param encoding Base64 variant.
-   * @param format Must be "s" to return string format.
+   * @param format Format of the decoded string.
    * @return The base64 decoded version of the input string as String.
    */
-  def b64decode(input: String, encoding: Base64Variant, format: "s"): String = js.native
+  def b64decode(input: String, encoding: Base64Variant, format: Format): String = js.native
 
   /**
    * Base64 encode a string or ArrayBuffer.

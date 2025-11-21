@@ -4,8 +4,7 @@ import scala.scalajs.js
 import scala.scalajs.js.|
 import scala.scalajs.js.typedarray.ArrayBuffer
 import scala.scalajs.js.JSConverters._
-
-type RequestBody = String | StructuredRequestBody | ArrayBuffer
+import org.virtuslab.scalajs.k6.http.Batch._
 
 @js.native
 trait StructuredRequestBody extends js.Object
@@ -13,14 +12,13 @@ trait StructuredRequestBody extends js.Object
 object StructuredRequestBody {
   def apply(fields: Map[String, String | FileData]): StructuredRequestBody = {
     val obj = js.Dynamic.literal()
-    fields.foreach { case (key, value) =>
-      obj.updateDynamic(key)(value.asInstanceOf[js.Any])
+    fields.foreach {
+      case (key, value) =>
+        obj.updateDynamic(key)(value.asInstanceOf[js.Any])
     }
     obj.asInstanceOf[StructuredRequestBody]
   }
 }
-
-type ArrayBatchRequest = js.Tuple4[String, URL, js.UndefOr[RequestBody], js.UndefOr[Params]]
 
 @js.native
 trait ObjectBatchRequest extends js.Object {
@@ -47,8 +45,12 @@ object ObjectBatchRequest {
       .asInstanceOf[ObjectBatchRequest]
 }
 
-type BatchRequest = String | HttpURL | ArrayBatchRequest | ObjectBatchRequest
+object Batch {
+  type RequestBody = String | StructuredRequestBody | ArrayBuffer
+  type ArrayBatchRequest = js.Tuple4[String, URL, js.UndefOr[RequestBody], js.UndefOr[Params]]
+  type BatchRequest = String | HttpURL | ArrayBatchRequest | ObjectBatchRequest
 
-type BatchRequests = js.Array[BatchRequest] | js.Dictionary[BatchRequest]
+  type BatchRequests = js.Array[BatchRequest] | js.Dictionary[BatchRequest]
 
-type BatchResponses = js.Array[Response] | js.Dictionary[Response]
+  type BatchResponses = js.Array[Response] | js.Dictionary[Response]
+}

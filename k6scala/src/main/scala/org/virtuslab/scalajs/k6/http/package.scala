@@ -6,6 +6,7 @@ import js.JSConverters._
 import scala.scalajs.js.typedarray._
 import org.virtuslab.scalajs.converters.FromJSPromise
 import org.virtuslab.scalajs.k6.http.AsyncRequest
+import org.virtuslab.scalajs.k6.http.Batch._
 
 package object http {
   type BodyOpt = js.UndefOr[String | js.Object | ArrayBuffer]
@@ -28,9 +29,15 @@ package object http {
       params: Option[Params] = None
   ): Response = Http.request(method.toJSType, url, body.orUndefined, params.orUndefined)
   def batch(requests: Seq[BatchRequest]): Seq[Response] =
-    Http.batch(requests.toJSArray.asInstanceOf[BatchRequests]).asInstanceOf[js.Array[Response]].toSeq
+    Http
+      .batch(requests.toJSArray.asInstanceOf[BatchRequests])
+      .asInstanceOf[js.Array[Response]]
+      .toSeq
   def batch(requests: Map[String, BatchRequest]): Map[String, Response] =
-    Http.batch(requests.toJSDictionary.asInstanceOf[BatchRequests]).asInstanceOf[js.Dictionary[Response]].toMap
+    Http
+      .batch(requests.toJSDictionary.asInstanceOf[BatchRequests])
+      .asInstanceOf[js.Dictionary[Response]]
+      .toMap
   def cookieJar(): CookieJar =
     Http.cookieJar()
   def del(url: URL, body: Option[String] = None, params: Option[Params] = None): Response =
