@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-package org.virtuslab.scalajs.k6.http
+package org.virtuslab.scalajs.k6
 
-import scala.scalajs.js
+package object html {
 
-@js.native
-trait ResponseRequest extends js.Object {
-  def body: String = js.native
-  def cookies: js.Dictionary[js.Array[RequestCookie]] = js.native
-  def headers: js.Dictionary[js.Array[String]] = js.native
-  def method: String = js.native
-  def url: String = js.native
+  /**
+   * Parse an HTML string and return a [[Selection]] wrapping the document.
+   *
+   * Equivalent to the `parseHTML` function from the `k6/html` module.
+   *
+   * @param src
+   *   raw HTML string to parse
+   * @return
+   *   a [[Selection]] representing the parsed document
+   * @see
+   *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-html/parsehtml/ k6 parseHTML]]
+   */
+  def parseHTML(src: String): Selection = Html.parseHTML(src)
 }

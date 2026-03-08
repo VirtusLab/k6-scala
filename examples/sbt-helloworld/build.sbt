@@ -19,15 +19,16 @@ def exampleProject(id: String, dir: String) = Project(id, file(dir))
       _.withModuleSplitStyle(ModuleSplitStyle.FewestModules).withModuleKind(ModuleKind.ESModule)
     },
     runK6test := {
-      val jsTargetDir = (Compile / fullOptJS / crossTarget).value
-      val name = (Compile / fullOptJS / moduleName).value
+      val _ = (Compile / fastOptJS).value
+      val jsTargetDir = (Compile / fastOptJS / crossTarget).value
+      val name = (Compile / fastOptJS / moduleName).value
       val jsOutput = jsTargetDir / s"${name}-fastopt.js"
       val log = streams.value.log
       log.info(s"Using JS output: ${jsOutput.getAbsolutePath()}")
       log.info(s"Running k6 test...")
       val exitCode = Process(Seq("k6", "run", jsOutput.getAbsolutePath)).!
       if (exitCode != 0) {
-        log.error("k6 failed!")
+        sys.error("k6 failed!")
       }
     },
     libraryDependencies ++= Seq(

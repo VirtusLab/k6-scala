@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-package org.virtuslab.scalajs.k6.http
+package org.virtuslab.scalajs.k6.html
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation._
 
 @js.native
-trait ResponseRequest extends js.Object {
-  def body: String = js.native
-  def cookies: js.Dictionary[js.Array[RequestCookie]] = js.native
-  def headers: js.Dictionary[js.Array[String]] = js.native
-  def method: String = js.native
-  def url: String = js.native
+@JSImport("k6/html", JSImport.Namespace)
+private[html] object Html extends js.Object {
+  def parseHTML(src: String): Selection = js.native
 }

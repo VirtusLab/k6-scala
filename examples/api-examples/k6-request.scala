@@ -18,20 +18,28 @@ object RequestExample {
   def main(): Unit = {
     val userId = "123"
     val base = "https://quickpizza.grafana.com"
-    
+
     val r1 = http.request(GET, base)
     sleep(100.millis)
-    
-    val r2 = http.request(POST, url"$base/api/pizza", body = Some("""{"maxCaloriesPerSlice":1000,"mustBeVegetarian":false,"excludedIngredients":[],"excludedTools":[],"maxNumberOfToppings":5,"minNumberOfToppings":2,"customName":""}"""))
+
+    val r2 = http.request(
+      POST,
+      url"$base/api/pizza",
+      body = Some(
+        """{"maxCaloriesPerSlice":1000,"mustBeVegetarian":false,"excludedIngredients":[],"excludedTools":[],"maxNumberOfToppings":5,"minNumberOfToppings":2,"customName":""}"""
+      )
+    )
     sleep(100.millis)
-    
+
     val r3 = http.request(POST, url"$base/api/pizza", body = None)
-    
+
     val all = Seq(r1, r2, r3)
-    all.foreach(r => check(r, Checkers("ok" -> Check[Response](res => res.status >= 200 && res.status < 500))))
+    all.foreach(r =>
+      check(r, Checkers("ok" -> Check[Response](res => res.status >= 200 && res.status < 500)))
+    )
     println(s"Total: ${all.length}")
   }
-  
+
   @JSExportTopLevel("options")
   val options = Options(iterations = Some(1))
 }

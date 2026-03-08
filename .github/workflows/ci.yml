@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
@@ -15,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scalaversion: ["2.12.10", "2.13.17", "3.3.6"]
+        scalaversion: ["2.12.21", "2.13.16", "3.3.6", "3.5.0"]
     steps:
 
       - uses: actions/checkout@v4
@@ -27,4 +30,24 @@ jobs:
         run: sbt -DCI=1 "++${{ matrix.scalaversion }}" test package
 
       - name: Validate formatting
-        run: sbt -DCI=1 "++${{ matrix.scalaversion }}" scalafmtCheck
+        run: sbt -DCI=1 "++${{ matrix.scalaversion }}" scalafmtCheckAll
+
+      - name: Validate license headers
+        run: sbt -DCI=1 "++${{ matrix.scalaversion }}" headerCheck
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+
+      - name: Run tests with coverage
+        run: sbt -DCI=1 "++3.5.0" coverage test coverageReport
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: scoverage-report
+          path: k6scala/target/scala-3.5.0/scoverage-report/

@@ -1,37 +1,74 @@
 name: Run Examples
 
-
 on:
   pull_request:
   workflow_dispatch:
   push:
     tags-ignore:
       - v*
+
+permissions:
+  contents: read
+
 jobs:
   scala-cli-examples:
     strategy:
+      fail-fast: false
       matrix:
         example_dir: ["ramp-vus-scenario", "scala-cli-helloworld", "single-request"]
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+      - name: Publish k6-scala to local
+        run: sbt publishLocalDev
       - uses: coursier/cache-action@v6.4
       - uses: VirtusLab/scala-cli-setup@v1.5
-      - run: scala-cli --power package  examples/${{ matrix.example_dir }}/example.scala --js --js-emit-source-maps --js-module-kind esmodule -f --js-no-opt
+      - run: scala-cli --power package examples/${{ matrix.example_dir }}/example.scala --js --js-emit-source-maps --js-module-kind esmodule -f --js-no-opt
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
       - name: Run local k6 test
         uses: grafana/run-k6-action@v1
         with:
           path: example.js
-  mill-example:
-    runs-on: "ubuntu-latest"
+
+  scala-cli-api-examples:
+    strategy:
+      fail-fast: false
+      matrix:
+        example_file: ["k6-batch.scala", "k6-request.scala", "k6-timers.scala"]
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+      - name: Publish k6-scala to local
+        run: sbt publishLocalDev
+      - uses: coursier/cache-action@v6.4
+      - uses: VirtusLab/scala-cli-setup@v1.5
+      - run: scala-cli --power package examples/api-examples/${{ matrix.example_file }} --js --js-emit-source-maps --js-module-kind esmodule -f --js-no-opt -o example.js
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
+      - name: Run local k6 test
+        uses: grafana/run-k6-action@v1
+        with:
+          path: example.js
+
+  mill-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+      - name: Publish k6-scala to local
+        run: sbt publishLocalDev
       - uses: coursier/setup-action@v1
         with:
           jvm: temurin:17
@@ -40,23 +77,42 @@ jobs:
         uses: grafana/setup-k6-action@v1
       - name: Build simulation file
         run: mill helloworld.fastOpt
-        working-directory: ./mill-helloworld
+        working-directory: ./examples/mill-helloworld
       - name: Run K6 simulation
         run: mill helloworld.runK6test
-        working-directory: ./mill-helloworld
+        working-directory: ./examples/mill-helloworld
+
   sbt-example:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
+      - name: Publish k6-scala to local
+        run: sbt publishLocalDev
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
       - name: Build simulation file
-        run:  sbt fastOptJS
-        working-directory: ./sbt-helloworld
+        run: sbt fastOptJS
+        working-directory: ./examples/sbt-helloworld
       - name: Run K6 simulation
-        run:  sbt runK6test
-        working-directory: ./sbt-helloworld
+        run: sbt runK6test
+        working-directory: ./examples/sbt-helloworld
+
+  gradle-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+      - name: Publish k6-scala to local
+        run: sbt publishLocalDev
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
+      - name: Build and run K6 simulation
+        run: ./gradlew :helloworld:runK6test
+        working-directory: ./examples/gradle-helloworld
