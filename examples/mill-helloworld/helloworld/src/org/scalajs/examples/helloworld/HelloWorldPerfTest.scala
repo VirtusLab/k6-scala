@@ -1,8 +1,10 @@
 package org.scalajs.examples.helloworld
 
 import scala.scalajs.js.annotation._
-import org.virtuslab.scalajs.k6.http
 import scala.concurrent.duration._
+import org.virtuslab.scalajs.k6.http
+import org.virtuslab.scalajs.k6.http._
+import org.virtuslab.scalajs.k6._
 
 object HelloWorldPerfTest {
 

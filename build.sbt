@@ -25,7 +25,7 @@ lazy val releaseTag = sys.props.get("release")
 //settings for all the projects
 lazy val commonSettings = Seq(
   scalaVersion := "3.5.0",
-  crossScalaVersions := Seq("2.12.10", "2.13.16", "3.3.6"),
+  crossScalaVersions := Seq("2.12.21", "2.13.17", "3.3.6", "3.5.0"),
   name := "k6-scala",
   updateOptions := updateOptions.value.withCachedResolution(true),
   scalacOptions ++= Seq(
@@ -45,18 +45,26 @@ lazy val publishLocalDev = taskKey[Unit]("Publish local version with dev suffix"
 
 publishLocalDev := {
   val log = streams.value.log
-  val originalVersion = (ThisBuild / version).value
+  val s   = (state.value: @sbtUnchecked)
   val devVersion = "dev"
+  val versions =
+    ((k6scala / crossScalaVersions).value :+ (k6scala / scalaVersion).value).distinct
 
-  log.info(s"Publishing dev version: $devVersion")
-
-  val extracted = Project.extract(state.value)
-  val stateWithDevVersion = extracted.appendWithoutSession(
-    Seq(ThisBuild / version := devVersion),
-    state.value
+  log.info(
+    s"Publishing dev version: $devVersion for Scala versions: ${versions.mkString(", ")}"
   )
 
-  Project.extract(stateWithDevVersion).runTask(k6scala / publishLocal, stateWithDevVersion)
+  versions.foreach { ver =>
+    val extracted = Project.extract(s)
+    val newState = extracted.appendWithoutSession(
+      Seq(
+        ThisBuild / version := devVersion,
+        ThisBuild / scalaVersion := ver
+      ),
+      s
+    )
+    Project.extract(newState).runTask(k6scala / publishLocal, newState)
+  }
 }
 
 lazy val root = Project("root", file("."))

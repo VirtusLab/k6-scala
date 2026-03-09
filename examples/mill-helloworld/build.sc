@@ -9,10 +9,10 @@ val projectScalaVersion = "3.5.0"
 object helloworld extends ScalaJSModule {
 
   override def scalaVersion = projectScalaVersion
-  override def scalaJSVersion = "1.18.1"
+  override def scalaJSVersion = "1.20.2"
 
   override def ivyDeps: Target[Loose.Agg[Dep]] = super.ivyDeps() ++ Agg(
-    ivy"org.virtuslab::k6-scala::dev".withDottyCompat(projectScalaVersion)
+    ivy"org.virtuslab::k6-scala::dev"
   )
   override def moduleKind = ModuleKind.ESModule
   override def moduleSplitStyle = ModuleSplitStyle.FewestModules

@@ -1,5 +1,5 @@
 //> using scala "3.5.0"
-//> using jsVersion "1.18.1"
+//> using jsVersion "1.20.2"
 //> using platform scala-js
 //> using dep "org.virtuslab::k6-scala::dev"
 package example
@@ -81,5 +81,5 @@ object HtmlFormsExample {
   }
 
   @JSExportTopLevel("options")
-  val options = Options(iterations = Some(1))
+  val options = Options(vus = Some(1), iterations = Some(1))
 }

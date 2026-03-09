@@ -1,5 +1,5 @@
 //> using scala "3.5.0"
-//> using jsVersion "1.18.1"
+//> using jsVersion "1.20.2"
 //> using platform scala-js
 //> using dep "org.virtuslab::k6-scala::dev"
 package example
@@ -9,6 +9,7 @@ import scala.scalajs.js.annotation.*
 import org.virtuslab.scalajs.k6.execution.*
 import org.virtuslab.scalajs.k6.timers.*
 import org.virtuslab.scalajs.k6.*
+import org.virtuslab.scalajs.k6.options.*
 import scala.concurrent.duration.*
 
 object Example {
@@ -26,4 +27,7 @@ object Example {
     )
     println(s"secnario name is: ${Execution.scenario.name}")
   }
+
+  @JSExportTopLevel("options")
+  val options = Options(vus = Some(1), iterations = Some(1))
 }
