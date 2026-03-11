@@ -22,7 +22,7 @@ jobs:
       - name: Publish k6-scala locally for all Scala versions
         run: sbt publishLocalDev
       - name: Upload ivy2 local artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
