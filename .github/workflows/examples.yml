@@ -35,6 +35,7 @@ jobs:
       matrix:
         example_file: [
           "k6-batch",
+          "k6-counter-metrics",
           "k6-form-data",
           "k6-html-forms",
           "k6-json-responses",
