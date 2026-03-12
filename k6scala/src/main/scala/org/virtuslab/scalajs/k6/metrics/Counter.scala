@@ -51,11 +51,19 @@ final class Counter private (private val inner: CounterNative) {
   def add(value: Double, tags: Option[Map[String, String]] = None): Unit =
     inner.add(value, tagsToJS(tags))
 
-  /** Add an integer value to the counter (convenience overload). Use `add(n, None)` for no tags. */
+  /** Add an integer value to the counter (convenience overload, untagged). */
+  def add(value: Int): Unit =
+    add(value.toDouble, None)
+
+  /** Add an integer value to the counter with tags (convenience overload). */
   def add(value: Int, tags: Option[Map[String, String]]): Unit =
     add(value.toDouble, tags)
 
-  /** Add 1 if true, 0 if false (convenience for success/failure counting). Use `add(b, None)` for no tags. */
+  /** Add 1 if true, 0 if false (convenience for success/failure counting, untagged). */
+  def add(value: Boolean): Unit =
+    add(if (value) 1.0 else 0.0, None)
+
+  /** Add 1 if true, 0 if false with tags (convenience for success/failure counting). */
   def add(value: Boolean, tags: Option[Map[String, String]]): Unit =
     add(if (value) 1.0 else 0.0, tags)
 }

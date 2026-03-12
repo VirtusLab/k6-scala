@@ -61,7 +61,11 @@ final class Rate private (private val inner: RateNative) {
   def add(value: Double, tags: Option[Map[String, String]] = None): Unit =
     inner.add(value, tagsToJS(tags))
 
-  /** Convenience overload for integer values. */
+  /** Convenience overload for integer values (untagged). */
+  def add(value: Int): Unit =
+    add(value.toDouble, None)
+
+  /** Convenience overload for integer values with tags. */
   def add(value: Int, tags: Option[Map[String, String]]): Unit =
     add(value.toDouble, tags)
 
@@ -73,6 +77,10 @@ final class Rate private (private val inner: RateNative) {
    *   errorRate.add(response.status == 200)
    * }}}
    */
+  def add(value: Boolean): Unit =
+    add(if (value) 1.0 else 0.0, None)
+
+  /** Convenience overload mapping `true` to 1.0 and `false` to 0.0, with tags. */
   def add(value: Boolean, tags: Option[Map[String, String]]): Unit =
     add(if (value) 1.0 else 0.0, tags)
 }

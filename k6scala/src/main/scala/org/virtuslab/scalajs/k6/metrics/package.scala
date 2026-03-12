@@ -21,6 +21,13 @@ import scala.scalajs.js.JSConverters._
 
 package object metrics {
 
+  /**
+   * Shared helper for converting optional Scala tag maps into the JS representation expected by
+   * k6 metric constructors and `add` methods.
+   *
+   * All custom metric wrappers in this package should use this helper to keep the Scala → JS
+   * boundary consistent.
+   */
   private[metrics] def tagsToJS(
       tags: Option[Map[String, String]]
   ): js.UndefOr[js.Dictionary[String]] =
