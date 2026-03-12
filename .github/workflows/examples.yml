@@ -55,7 +55,7 @@ jobs:
           path: ~/.ivy2/local/org.virtuslab/
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
-      - uses: coursier/cache-action@v6.4
+      - uses: coursier/cache-action@v8.0
       - uses: VirtusLab/scala-cli-setup@v1.5
         with:
           jvm: temurin:21
