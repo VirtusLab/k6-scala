@@ -43,7 +43,8 @@ jobs:
           "k6-ramp-vus-scenario",
           "k6-request",
           "k6-single-request",
-          "k6-timers"
+          "k6-timers",
+          "k6-trend-metrics"
         ]
     runs-on: ubuntu-latest
     steps:
