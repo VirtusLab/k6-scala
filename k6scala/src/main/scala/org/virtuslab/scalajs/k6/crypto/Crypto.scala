@@ -31,17 +31,17 @@ import scala.scalajs.js.typedarray.ArrayBuffer
 @JSImport("k6/crypto", JSImport.Namespace)
 private[crypto] object Crypto extends js.Object {
 
-  def md4(input: String, outputEncoding: String): String  = js.native
-  def md5(input: String, outputEncoding: String): String  = js.native
+  def md4(input: String, outputEncoding: String): String = js.native
+  def md5(input: String, outputEncoding: String): String = js.native
   def sha1(input: String, outputEncoding: String): String = js.native
 
   def sha256(input: String, outputEncoding: String): String = js.native
   def sha384(input: String, outputEncoding: String): String = js.native
 
-  def sha512(input: String, outputEncoding: String): String     = js.native
+  def sha512(input: String, outputEncoding: String): String = js.native
   def sha512_224(input: String, outputEncoding: String): String = js.native
   def sha512_256(input: String, outputEncoding: String): String = js.native
-  def ripemd160(input: String, outputEncoding: String): String  = js.native
+  def ripemd160(input: String, outputEncoding: String): String = js.native
 
   def hmac(
       algorithm: String,
@@ -50,10 +50,9 @@ private[crypto] object Crypto extends js.Object {
       outputEncoding: String
   ): String = js.native
 
-  def createHash(algorithm: String): Hasher                = js.native
+  def createHash(algorithm: String): Hasher = js.native
   def createHMAC(algorithm: String, secret: String): Hasher = js.native
 
   /** Generate cryptographically strong random bytes as an ArrayBuffer. */
   def randomBytes(count: Int): ArrayBuffer = js.native
 }
-

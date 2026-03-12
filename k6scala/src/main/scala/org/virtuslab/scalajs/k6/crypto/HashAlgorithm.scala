@@ -28,27 +28,26 @@ sealed trait HashAlgorithm
 
 object HashAlgorithm {
 
-  case object MD4        extends HashAlgorithm
-  case object MD5        extends HashAlgorithm
-  case object SHA1       extends HashAlgorithm
-  case object SHA256     extends HashAlgorithm
-  case object SHA384     extends HashAlgorithm
-  case object SHA512     extends HashAlgorithm
+  case object MD4 extends HashAlgorithm
+  case object MD5 extends HashAlgorithm
+  case object SHA1 extends HashAlgorithm
+  case object SHA256 extends HashAlgorithm
+  case object SHA384 extends HashAlgorithm
+  case object SHA512 extends HashAlgorithm
   case object SHA512_224 extends HashAlgorithm
   case object SHA512_256 extends HashAlgorithm
-  case object RIPEMD160  extends HashAlgorithm
+  case object RIPEMD160 extends HashAlgorithm
 
   private[crypto] def toJs(algorithm: HashAlgorithm): String =
     algorithm match {
-      case MD4        => "md4"
-      case MD5        => "md5"
-      case SHA1       => "sha1"
-      case SHA256     => "sha256"
-      case SHA384     => "sha384"
-      case SHA512     => "sha512"
+      case MD4 => "md4"
+      case MD5 => "md5"
+      case SHA1 => "sha1"
+      case SHA256 => "sha256"
+      case SHA384 => "sha384"
+      case SHA512 => "sha512"
       case SHA512_224 => "sha512_224"
       case SHA512_256 => "sha512_256"
-      case RIPEMD160  => "ripemd160"
+      case RIPEMD160 => "ripemd160"
     }
 }
-

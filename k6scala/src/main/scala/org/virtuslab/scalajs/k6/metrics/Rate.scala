@@ -90,4 +90,3 @@ object Rate {
   /** Create a new rate metric. The name is used in k6 output and threshold definitions. */
   def apply(name: String): Rate = new Rate(new RateNative(name))
 }
-

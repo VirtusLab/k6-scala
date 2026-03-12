@@ -27,10 +27,9 @@ object KeyFormat {
 
   def toJs(format: KeyFormat): String =
     format match {
-      case Raw   => "raw"
+      case Raw => "raw"
       case Pkcs8 => "pkcs8"
-      case Spki  => "spki"
-      case Jwk   => "jwk"
+      case Spki => "spki"
+      case Jwk => "jwk"
     }
 }
-

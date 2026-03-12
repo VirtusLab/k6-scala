@@ -34,17 +34,16 @@ object KeyUsage {
 
   def toJs(usage: KeyUsage): String =
     usage match {
-      case Encrypt    => "encrypt"
-      case Decrypt    => "decrypt"
-      case Sign       => "sign"
-      case Verify     => "verify"
-      case DeriveKey  => "deriveKey"
+      case Encrypt => "encrypt"
+      case Decrypt => "decrypt"
+      case Sign => "sign"
+      case Verify => "verify"
+      case DeriveKey => "deriveKey"
       case DeriveBits => "deriveBits"
-      case WrapKey    => "wrapKey"
-      case UnwrapKey  => "unwrapKey"
+      case WrapKey => "wrapKey"
+      case UnwrapKey => "unwrapKey"
     }
 
   def toJsArray(usages: Seq[KeyUsage]): js.Array[String] =
     usages.map(toJs).toJSArray
 }
-

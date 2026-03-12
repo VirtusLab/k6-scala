@@ -26,15 +26,14 @@ sealed trait OutputEncoding
 
 object OutputEncoding {
 
-  case object Hex          extends OutputEncoding
-  case object Base64       extends OutputEncoding
+  case object Hex extends OutputEncoding
+  case object Base64 extends OutputEncoding
   case object Base64RawURL extends OutputEncoding
 
   private[crypto] def toJs(encoding: OutputEncoding): String =
     encoding match {
-      case Hex          => "hex"
-      case Base64       => "base64"
+      case Hex => "hex"
+      case Base64 => "base64"
       case Base64RawURL => "base64rawurl"
     }
 }
-

@@ -34,25 +34,27 @@ private[data] class SharedArrayCtor[A](
 
 object SharedArray {
 
-  /** Construct a k6 SharedArray using the native constructor and a JS initializer function.
-    *
-    * The initializer function is evaluated once during the k6 init stage. Its resulting
-    * `js.Array[A]` is stored and shared across all VUs without additional memory copies.
-    */
+  /**
+   * Construct a k6 SharedArray using the native constructor and a JS initializer function.
+   *
+   * The initializer function is evaluated once during the k6 init stage. Its resulting
+   * `js.Array[A]` is stored and shared across all VUs without additional memory copies.
+   */
   def apply[A](name: String, init: js.Function0[js.Array[A]]): SharedArray[A] =
     new SharedArrayCtor[A](name, init)
 
-  /** Scala-friendly constructor that builds the shared array from a Scala `Seq[A]`.
-    *
-    * The by-name initializer is evaluated once during the k6 init stage. Its elements are
-    * converted to a `js.Array[A]` and shared across all VUs.
-    *
-    * '''Important''': k6 SharedArray serialises elements by copying own properties. Scala case
-    * classes have mangled internal field names (`LMyClass__f_field`) and expose Scala-named
-    * accessors only via prototype methods, which are lost during k6's copy. To preserve field
-    * names, use types that extend `js.Object` (Scala.js-defined JS classes), `js.Dynamic.literal`,
-    * or `js.Dictionary` — these store fields as plain JS own properties with their Scala names.
-    */
+  /**
+   * Scala-friendly constructor that builds the shared array from a Scala `Seq[A]`.
+   *
+   * The by-name initializer is evaluated once during the k6 init stage. Its elements are
+   * converted to a `js.Array[A]` and shared across all VUs.
+   *
+   * '''Important''': k6 SharedArray serialises elements by copying own properties. Scala case
+   * classes have mangled internal field names (`LMyClass__f_field`) and expose Scala-named
+   * accessors only via prototype methods, which are lost during k6's copy. To preserve field
+   * names, use types that extend `js.Object` (Scala.js-defined JS classes), `js.Dynamic.literal`,
+   * or `js.Dictionary` — these store fields as plain JS own properties with their Scala names.
+   */
   def fromSeq[A](name: String)(init: => Seq[A]): SharedArray[A] =
     apply(
       name,

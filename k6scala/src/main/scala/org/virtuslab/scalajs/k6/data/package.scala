@@ -21,12 +21,12 @@ import org.virtuslab.scalajs.k6.data.SharedArray
 
 package object data {
 
-  /** Scala-friendly helper for constructing a k6 SharedArray from a Scala `Seq[A]`.
-    *
-    * The initializer is evaluated once during the k6 init stage and its elements are shared
-    * across all VUs via a k6 `SharedArray`.
-    */
+  /**
+   * Scala-friendly helper for constructing a k6 SharedArray from a Scala `Seq[A]`.
+   *
+   * The initializer is evaluated once during the k6 init stage and its elements are shared
+   * across all VUs via a k6 `SharedArray`.
+   */
   def sharedArrayFromSeq[A](name: String)(init: => Seq[A]): SharedArray[A] =
     SharedArray.fromSeq(name)(init)
 }
-

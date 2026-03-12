@@ -81,4 +81,3 @@ object Trend {
   def apply(name: String, isTime: Boolean = false): Trend =
     new Trend(new TrendNative(name, isTime))
 }
-

@@ -100,4 +100,3 @@ package object webcrypto {
   ): js.Promise[js.Any] =
     subtle.exportKey(KeyFormat.toJs(format), key)
 }
-

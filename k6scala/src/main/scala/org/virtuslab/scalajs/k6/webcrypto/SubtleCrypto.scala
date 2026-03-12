@@ -96,4 +96,3 @@ trait SubtleCrypto extends js.Object {
       keyUsages: js.Array[String]
   ): js.Promise[CryptoKey] = js.native
 }
-

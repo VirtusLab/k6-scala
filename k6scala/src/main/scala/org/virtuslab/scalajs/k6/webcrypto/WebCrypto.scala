@@ -36,4 +36,3 @@ private[webcrypto] object WebCrypto extends js.Object {
 
   val subtle: SubtleCrypto = js.native
 }
-

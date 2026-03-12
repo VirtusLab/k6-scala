@@ -33,4 +33,3 @@ trait Hasher extends js.Object {
 
   def digest(outputEncoding: String): String = js.native
 }
-

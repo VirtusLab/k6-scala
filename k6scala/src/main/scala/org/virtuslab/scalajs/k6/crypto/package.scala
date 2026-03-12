@@ -75,4 +75,3 @@ package object crypto {
   def randomBytes(count: Int): ArrayBuffer =
     Crypto.randomBytes(count)
 }
-

@@ -46,4 +46,3 @@ trait CryptoKeyPair extends js.Object {
 
   val privateKey: CryptoKey = js.native
 }
-
