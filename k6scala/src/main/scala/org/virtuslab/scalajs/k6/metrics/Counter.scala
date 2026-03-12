@@ -18,7 +18,6 @@ package org.virtuslab.scalajs.k6.metrics
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.JSConverters._
 
 /** Native k6 Counter class. Cumulative metric that tracks the total number of added values. */
 @js.native
@@ -50,7 +49,7 @@ final class Counter private (private val inner: CounterNative) {
 
   /** Add a numeric value to the counter. */
   def add(value: Double, tags: Option[Map[String, String]] = None): Unit =
-    inner.add(value, tags.map(_.toJSDictionary).orUndefined)
+    inner.add(value, tagsToJS(tags))
 
   /** Add an integer value to the counter (convenience overload). Use `add(n, None)` for no tags. */
   def add(value: Int, tags: Option[Map[String, String]]): Unit =
