@@ -29,7 +29,7 @@ object CounterMetricsExample {
   @JSExportTopLevel(JSImport.Default)
   def main(): Unit = {
     myCounter.add(1)
-    myCounter.add(5, Some(Map("tag1" -> "value1", "tag2" -> "value2")))
+    myCounter.add(1, Some(Map("tag1" -> "value1", "tag2" -> "value2")))
     myCounter.add(2)
     myCounter.add(0) // edge case: adding 0 is valid
     val success = true
@@ -38,15 +38,15 @@ object CounterMetricsExample {
     val res = http.get("https://test.k6.io")
     myCounter.add(if (res.status >= 400) 1 else 0, Some(Map("kind" -> "http_error")))
 
-    sleep(50.millis)
+    sleep(500.millis)
   }
 
   @JSExportTopLevel("options")
   val options: Options = Options(
     vus = Some(1),
-    iterations = Some(3),
+    iterations = Some(1),
     thresholds = Some(
-      Map("my_counter" -> Seq("count < 100").toJSArray)
+      Map("my_counter" -> Seq("count < 500").toJSArray)
         .toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )

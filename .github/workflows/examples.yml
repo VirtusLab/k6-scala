@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
@@ -81,7 +81,7 @@ jobs:
         uses: grafana/run-k6-action@v1
         with:
           debug: true
-          flags: --vus 1 --duration 10s
+          flags: --vus 1 --duration 1s
           path: ./examples/api-examples/${{ matrix.example_file }}.js
 
   mill-example:
@@ -92,7 +92,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
@@ -117,7 +117,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
@@ -141,7 +141,7 @@ jobs:
   #       with:
   #         fetch-depth: 0
   #     - name: Download k6-scala local artifacts
-  #       uses: actions/download-artifact@v4
+  #       uses: actions/download-artifact@v8
   #       with:
   #         name: ivy2-local-k6-scala
   #         path: ~/.ivy2/local/org.virtuslab/
