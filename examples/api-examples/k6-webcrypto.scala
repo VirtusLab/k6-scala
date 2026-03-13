@@ -6,8 +6,7 @@
 package example
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSExportTopLevel
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.*
 import scala.scalajs.js.typedarray.ArrayBuffer
 import scala.scalajs.js.typedarray.Uint8Array
 
