@@ -22,7 +22,7 @@ jobs:
       - name: Publish k6-scala locally for all Scala versions
         run: sbt publishLocalDev
       - name: Upload ivy2 local artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
@@ -35,13 +35,17 @@ jobs:
       matrix:
         example_file: [
           "k6-batch",
+          "k6-counter-metrics",
+          "k6-gauge-metrics",
           "k6-form-data",
           "k6-html-forms",
           "k6-json-responses",
           "k6-ramp-vus-scenario",
           "k6-request",
           "k6-single-request",
-          "k6-timers"
+          "k6-timers",
+          "k6-trend-metrics",
+          "k6-custom-metrics"
         ]
     runs-on: ubuntu-latest
     steps:
@@ -55,8 +59,8 @@ jobs:
           path: ~/.ivy2/local/org.virtuslab/
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
-      - uses: coursier/cache-action@v8.0
-      - uses: VirtusLab/scala-cli-setup@v1.5
+      - uses: coursier/cache-action@v6.4
+      - uses: VirtusLab/scala-cli-setup@v1.12
         with:
           jvm: temurin:21
           scala-cli-version: 1.12.3
@@ -77,7 +81,7 @@ jobs:
         uses: grafana/run-k6-action@v1
         with:
           debug: true
-          flags: --vus 1 --duration 10s
+          flags: --vus 1 --duration 1s
           path: ./examples/api-examples/${{ matrix.example_file }}.js
 
   mill-example:
@@ -92,7 +96,7 @@ jobs:
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
-      - uses: coursier/setup-action@v1
+      - uses: coursier/setup-action@v2
         with:
           jvm: temurin:21
           apps: mill
