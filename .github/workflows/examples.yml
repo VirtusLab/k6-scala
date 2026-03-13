@@ -22,7 +22,7 @@ jobs:
       - name: Publish k6-scala locally for all Scala versions
         run: sbt publishLocalDev
       - name: Upload ivy2 local artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
       - uses: coursier/cache-action@v6.4
-      - uses: VirtusLab/scala-cli-setup@v1.5
+      - uses: VirtusLab/scala-cli-setup@v1.12
         with:
           jvm: temurin:21
           scala-cli-version: 1.12.3
@@ -96,7 +96,7 @@ jobs:
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
-      - uses: coursier/setup-action@v1
+      - uses: coursier/setup-action@v2
         with:
           jvm: temurin:21
           apps: mill

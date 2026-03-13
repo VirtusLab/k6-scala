@@ -20,8 +20,6 @@ import scala.scalajs.js
 import scala.scalajs.js.typedarray.ArrayBuffer
 import scala.scalajs.js.typedarray.ArrayBufferView
 
-import org.virtuslab.scalajs.k6.webcrypto._
-
 package object webcrypto {
 
   def getRandomValues[T <: ArrayBufferView](array: T): T =

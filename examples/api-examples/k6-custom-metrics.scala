@@ -54,6 +54,7 @@ object CustomMetricsExample {
 
   @JSExportTopLevel("options")
   val options: Options = Options(
+    vus = Some(1),
     iterations = Some(5),
     thresholds = Some(
       Map(

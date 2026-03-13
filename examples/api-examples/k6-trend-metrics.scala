@@ -49,6 +49,7 @@ object TrendMetricsExample {
 
   @JSExportTopLevel("options")
   val options: Options = Options(
+    vus = Some(1),
     iterations = Some(5),
     thresholds = Some(
       Map("api_duration" -> Seq("p(95) < 500").toJSArray)

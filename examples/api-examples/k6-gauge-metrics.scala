@@ -52,6 +52,7 @@ object GaugeMetricsExample {
 
   @JSExportTopLevel("options")
   val options: Options = Options(
+    vus = Some(1),
     iterations = Some(3),
     thresholds = Some(
       Map("queue_length" -> Seq("value < 500").toJSArray)

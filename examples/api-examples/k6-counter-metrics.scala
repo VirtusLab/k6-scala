@@ -43,6 +43,7 @@ object CounterMetricsExample {
 
   @JSExportTopLevel("options")
   val options: Options = Options(
+    vus = Some(1),
     iterations = Some(3),
     thresholds = Some(
       Map("my_counter" -> Seq("count < 100").toJSArray)
