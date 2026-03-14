@@ -25,7 +25,7 @@ lazy val releaseTag = sys.props.get("release")
 //settings for all the projects
 lazy val commonSettings = Seq(
   scalaVersion := "3.5.0",
-  crossScalaVersions := Seq("2.12.21", "2.13.17", "3.3.6", "3.5.0"),
+  crossScalaVersions := Seq("2.12.21", "2.13.18", "3.3.6", "3.5.0"),
   name := "k6-scala",
   updateOptions := updateOptions.value.withCachedResolution(true),
   scalacOptions ++= Seq(
