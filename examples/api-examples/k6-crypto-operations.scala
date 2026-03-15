@@ -24,10 +24,10 @@ object CryptoOperationsExample {
 
   @JSExportTopLevel(JSImport.Default)
   def main(): Unit = {
-    val data   = "hello, k6-scala"
+    val data = "hello, k6-scala"
     val secret = "super-secret"
 
-    val md5Hex    = md5(data)
+    val md5Hex = md5(data)
     val sha256B64 = sha256(data, OutputEncoding.Base64)
 
     val hmacSha256Hex =
@@ -69,4 +69,3 @@ object CryptoOperationsExample {
     )
   )
 }
-

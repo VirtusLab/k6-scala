@@ -122,7 +122,9 @@ object GrpcConnectParams {
       .literal(
         plaintext = plaintext.orUndefined,
         reflect = reflect.orUndefined,
-        reflectMetadata = reflectMetadata.map(m => m.foldLeft(js.Dictionary.empty[js.Any])((d, p) => { d(p._1) = p._2; d })).orUndefined,
+        reflectMetadata = reflectMetadata
+          .map(m => m.foldLeft(js.Dictionary.empty[js.Any])((d, p) => { d(p._1) = p._2; d }))
+          .orUndefined,
         timeout = timeout.map(_.toK6).orUndefined,
         maxReceiveSize = maxReceiveSize.orUndefined,
         maxSendSize = maxSendSize.orUndefined,
@@ -140,8 +142,8 @@ object GrpcTlsParams {
       cacerts: Option[Either[String, Seq[String]]] = None
   ): GrpcTlsParams = {
     val cacertsJs = cacerts match {
-      case None             => js.undefined.asInstanceOf[js.Any]
-      case Some(Left(s))    => s.asInstanceOf[js.Any]
+      case None => js.undefined.asInstanceOf[js.Any]
+      case Some(Left(s)) => s.asInstanceOf[js.Any]
       case Some(Right(seq)) => seq.toJSArray.asInstanceOf[js.Any]
     }
     js.Dynamic
@@ -168,7 +170,9 @@ object GrpcInvokeParams {
       .literal(
         authority = authority.orUndefined,
         discardResponseMessage = discardResponseMessage.orUndefined,
-        metadata = metadata.map(m => m.foldLeft(js.Dictionary.empty[js.Any])((d, p) => { d(p._1) = p._2; d })).orUndefined,
+        metadata = metadata
+          .map(m => m.foldLeft(js.Dictionary.empty[js.Any])((d, p) => { d(p._1) = p._2; d }))
+          .orUndefined,
         tags = tags.map(_.toJSDictionary).orUndefined,
         timeout = timeout.map(_.toK6).orUndefined
       )

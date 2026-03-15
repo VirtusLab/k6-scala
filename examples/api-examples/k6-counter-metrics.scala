@@ -46,8 +46,7 @@ object CounterMetricsExample {
     vus = Some(1),
     iterations = Some(1),
     thresholds = Some(
-      Map("my_counter" -> Seq("count < 500").toJSArray)
-        .toJSDictionary
+      Map("my_counter" -> Seq("count < 500").toJSArray).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
   )

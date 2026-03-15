@@ -25,7 +25,7 @@ object WebCryptoExample {
 
   @JSExportTopLevel(JSImport.Default)
   def main(): js.Promise[Unit] = {
-    val uuid        = randomUUID()
+    val uuid = randomUUID()
     val randomBytes = new Uint8Array(16)
     getRandomValues(randomBytes)
 
@@ -86,4 +86,3 @@ object WebCryptoExample {
     iterations = Some(1)
   )
 }
-

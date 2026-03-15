@@ -17,22 +17,20 @@
 package org.virtuslab.scalajs.k6.grpc
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 
 /**
- * Native k6/net/grpc namespace. Provides the [[Client]] constructor. Use [[Client]]() to create
- * a gRPC client; use [[StatusConstants]] for status code comparison.
+ * Metadata for a gRPC stream message, passed as the second argument to the "data" event handler
+ * when using [[Stream.on]] with a two-argument callback.
  *
  * @see
- *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/ k6 net/grpc]]
+ *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/stream/message-metadata/ Metadata]]
  */
 @js.native
-@JSImport("k6/net/grpc", JSImport.Namespace)
-private[grpc] object GrpcNative extends js.Object {
+trait StreamMetadata extends js.Object {
 
-  /** Constructor for the gRPC Client. Use [[Client]]() from the package object in Scala code. */
-  val Client: js.Dynamic = js.native
-
-  /** Constructor for the gRPC Stream. Use [[Stream.apply]] in Scala code. */
-  val Stream: js.Dynamic = js.native
+  /**
+   * Timestamp of the original event (e.g. when the message was received), in k6's internal
+   * units.
+   */
+  def ts: Double = js.native
 }

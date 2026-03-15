@@ -21,8 +21,7 @@ object JsonResponseExample {
       ),
       params = Some(
         Params(
-          headers =
-            Some(Map("Content-Type" -> "application/json", "accept" -> "application/json")),
+          headers = Some(Map("Content-Type" -> "application/json", "accept" -> "application/json")),
           responseType = None,
           tags = None,
           timeout = None,

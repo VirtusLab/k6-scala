@@ -46,10 +46,7 @@ def main(): Unit = {
   check(
     http.get("https://test.k6.io"),
     Checkers(
-      "has shared user name" -> Check[Response](r =>
-        firstUser.name.nonEmpty
-      )
+      "has shared user name" -> Check[Response](r => firstUser.name.nonEmpty)
     )
   )
 }
-

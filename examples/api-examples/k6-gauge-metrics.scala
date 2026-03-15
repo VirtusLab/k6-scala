@@ -55,8 +55,7 @@ object GaugeMetricsExample {
     vus = Some(1),
     iterations = Some(3),
     thresholds = Some(
-      Map("queue_length" -> Seq("value < 500").toJSArray)
-        .toJSDictionary
+      Map("queue_length" -> Seq("value < 500").toJSArray).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
   )

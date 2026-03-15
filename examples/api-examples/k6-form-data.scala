@@ -48,4 +48,3 @@ object FormDataExample {
   @JSExportTopLevel("options")
   val options = Options(vus = Some(1), iterations = Some(1))
 }
-

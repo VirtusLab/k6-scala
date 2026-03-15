@@ -24,10 +24,10 @@ import org.virtuslab.scalajs.k6.options._
  */
 object CustomMetricsExample {
 
-  private val requestCount   = Counter("custom_request_count")
-  private val queueGauge     = Gauge("custom_queue_length")
-  private val errorRate      = Rate("custom_error_rate")
-  private val latencyTrend   = Trend("custom_latency", isTime = true)
+  private val requestCount = Counter("custom_request_count")
+  private val queueGauge = Gauge("custom_queue_length")
+  private val errorRate = Rate("custom_error_rate")
+  private val latencyTrend = Trend("custom_latency", isTime = true)
 
   @JSExportTopLevel(JSImport.Default)
   def main(): Unit = {
@@ -59,12 +59,11 @@ object CustomMetricsExample {
     thresholds = Some(
       Map(
         "custom_request_count" -> Seq("count < 1_000").toJSArray,
-        "custom_queue_length"  -> Seq("value < 1_000").toJSArray,
-        "custom_error_rate"    -> Seq("rate < 0.5").toJSArray,
-        "custom_latency"       -> Seq("p(95) < 1_000").toJSArray
+        "custom_queue_length" -> Seq("value < 1_000").toJSArray,
+        "custom_error_rate" -> Seq("rate < 0.5").toJSArray,
+        "custom_latency" -> Seq("p(95) < 1_000").toJSArray
       ).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
   )
 }
-

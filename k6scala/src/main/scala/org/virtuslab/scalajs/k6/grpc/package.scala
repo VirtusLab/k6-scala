@@ -18,7 +18,7 @@ package org.virtuslab.scalajs.k6
 
 package object grpc {
 
-  /** Alias for [[StatusConstants]] status codes; e.g. use `grpc.StatusOK` like in k6 JS. */
+  /** Alias for [[StatusConstants]] status codes; e.g. use `grpc.StatusOK` like in k6 JS. For streaming use [[Stream]].apply(client, url, params). */
   val StatusOK: Int = StatusConstants.OK
   val StatusCanceled: Int = StatusConstants.Canceled
   val StatusUnknown: Int = StatusConstants.Unknown

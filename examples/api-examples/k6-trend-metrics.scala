@@ -52,10 +52,8 @@ object TrendMetricsExample {
     vus = Some(1),
     iterations = Some(5),
     thresholds = Some(
-      Map("api_duration" -> Seq("p(95) < 500").toJSArray)
-        .toJSDictionary
+      Map("api_duration" -> Seq("p(95) < 500").toJSArray).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
   )
 }
-

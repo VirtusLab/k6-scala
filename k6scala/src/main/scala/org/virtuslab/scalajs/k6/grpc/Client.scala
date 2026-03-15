@@ -64,7 +64,8 @@ trait GrpcClientNative extends js.Object {
   /** Closes the connection to the gRPC service. */
   def close(): Unit = js.native
 
-  /** Loads and parses protocol buffer definitions. Must be called during the init phase. Use
+  /**
+   * Loads and parses protocol buffer definitions. Must be called during the init phase. Use
    * `None` or `Some(Nil)` for default import paths; pass one or more proto file paths.
    */
   def load(importPaths: js.Array[String], protoFiles: js.Array[String]): Unit = js.native
@@ -80,6 +81,9 @@ trait GrpcClientNative extends js.Object {
  */
 final class Client private (private val inner: GrpcClientNative) {
 
+  /** Native client instance; used by [[Stream]] for construction. */
+  private[grpc] def asNative: GrpcClientNative = inner
+
   /**
    * Loads and parses protocol buffer definitions. Must be called during the init phase. Use
    * `None` or `Some(Nil)` for default import paths; pass one or more proto file paths.
@@ -94,7 +98,7 @@ final class Client private (private val inner: GrpcClientNative) {
       throw new IllegalArgumentException("at least one proto file required")
     // k6 expects first arg as []string (array of strings). Use empty array for no paths; Go bridge fails on null/undefined.
     val pathsJs: js.Array[String] = importPaths match {
-      case None    => new js.Array[String]()
+      case None => new js.Array[String]()
       case Some(s) => s.toJSArray
     }
     inner.load(pathsJs, protoFiles.toJSArray)
@@ -132,5 +136,9 @@ object Client {
 
   /** Creates a new gRPC client. Call [[Client.load]] during init, then [[Client.connect]] in VU code. */
   def apply(): Client =
-    new Client(js.Dynamic.newInstance(GrpcNative.asInstanceOf[js.Dynamic].Client)().asInstanceOf[GrpcClientNative])
+    new Client(
+      js.Dynamic
+        .newInstance(GrpcNative.asInstanceOf[js.Dynamic].Client)()
+        .asInstanceOf[GrpcClientNative]
+    )
 }

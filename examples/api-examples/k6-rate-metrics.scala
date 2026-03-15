@@ -48,10 +48,8 @@ object RateMetricsExample {
   val options: Options = Options(
     iterations = Some(5),
     thresholds = Some(
-      Map("error_rate" -> Seq("rate < 0.1").toJSArray)
-        .toJSDictionary
+      Map("error_rate" -> Seq("rate < 0.1").toJSArray).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
   )
 }
-

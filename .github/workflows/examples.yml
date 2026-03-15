@@ -36,16 +36,25 @@ jobs:
         example_file: [
           "k6-batch",
           "k6-counter-metrics",
-          "k6-gauge-metrics",
+          "k6-crypto-operations",
+          "k6-custom-metrics",
           "k6-form-data",
+          "k6-gauge-metrics",
+          # "k6-grpc-streaming", # TODO: Enable when mock server is implemented
+          "k6-grpc",
           "k6-html-forms",
           "k6-json-responses",
           "k6-ramp-vus-scenario",
+          "k6-rate-metrics",
           "k6-request",
+          "k6-shared-array",
           "k6-single-request",
           "k6-timers",
           "k6-trend-metrics",
-          "k6-custom-metrics"
+          "k6-webcrypto",
+          "k6-websocket-connect",
+          "k6-websockets-modern",
+          "k6-websockets"
         ]
     runs-on: ubuntu-latest
     steps:
