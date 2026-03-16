@@ -30,5 +30,5 @@ package object html {
    * @see
    *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-html/parsehtml/ k6 parseHTML]]
    */
-  def parseHTML(src: String): Selection = Html.parseHTML(src)
+  def parseHTML(src: String): Selection = HTML.parseHTML(src)
 }
