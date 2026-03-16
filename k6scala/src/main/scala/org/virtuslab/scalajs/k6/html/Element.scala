@@ -34,61 +34,60 @@ trait Element extends js.Object {
   def selection(): Selection = js.native
 
   def nodeName(): String = js.native
-  def nodeType(): Int    = js.native
+  def nodeType(): Int = js.native
   def nodeValue(): String = js.native
 
-  def id(): String          = js.native
-  def innerHTML(): String   = js.native
+  def id(): String = js.native
+  def innerHTML(): String = js.native
   def textContent(): String = js.native
 
   def ownerDocument(): Element = js.native
 
   def attributes(): js.Array[Element] = js.native
 
-  def firstChild(): Element  = js.native
-  def lastChild(): Element   = js.native
+  def firstChild(): Element = js.native
+  def lastChild(): Element = js.native
   def childElementCount(): Int = js.native
 
   def firstElementChild(): Element = js.native
-  def lastElementChild(): Element  = js.native
+  def lastElementChild(): Element = js.native
 
-  def previousSibling(): Element        = js.native
-  def nextSibling(): Element            = js.native
+  def previousSibling(): Element = js.native
+  def nextSibling(): Element = js.native
   def previousElementSibling(): Element = js.native
-  def nextElementSibling(): Element     = js.native
+  def nextElementSibling(): Element = js.native
 
   def parentElement(): Element = js.native
-  def parentNode(): Element    = js.native
+  def parentNode(): Element = js.native
 
   def childNodes(): js.Array[Element] = js.native
-  def children(): js.Array[Element]   = js.native
+  def children(): js.Array[Element] = js.native
 
   def classList(): js.Array[String] = js.native
-  def className(): String           = js.native
+  def className(): String = js.native
 
   def lang(): String = js.native
 
   override def toString(): String = js.native
 
   def hasAttribute(name: String): Boolean = js.native
-  def getAttribute(name: String): String  = js.native
-  def hasAttributes(): Boolean            = js.native
-  def hasChildNodes(): Boolean            = js.native
+  def getAttribute(name: String): String = js.native
+  def hasAttributes(): Boolean = js.native
+  def hasChildNodes(): Boolean = js.native
 
-  def isSameNode(other: Element): Boolean  = js.native
+  def isSameNode(other: Element): Boolean = js.native
   def isEqualNode(other: Element): Boolean = js.native
 
   def getElementsByClassName(name: String): js.Array[Element] = js.native
-  def getElementsByTagName(name: String): js.Array[Element]   = js.native
+  def getElementsByTagName(name: String): js.Array[Element] = js.native
 
-  def querySelector(selector: String): Element              = js.native
+  def querySelector(selector: String): Element = js.native
   def querySelectorAll(selector: String): js.Array[Element] = js.native
 
   def contains(other: Element): Boolean = js.native
 
   def matches(selector: String): Boolean = js.native
 
-  def namespaceURI(): String              = js.native
+  def namespaceURI(): String = js.native
   def isDefaultNamespace(ns: String): Boolean = js.native
 }
-

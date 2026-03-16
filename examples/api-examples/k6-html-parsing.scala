@@ -23,7 +23,7 @@ object HtmlParsingExample {
       Checkers("status is 200" -> Check[Response](_.status == 200))
     )
 
-    val doc      = parseHTML(res.body)
+    val doc = parseHTML(res.body)
     val headings = doc.find("h1, h2, h3")
 
     println(s"Total headings: ${headings.size()}")
@@ -33,9 +33,11 @@ object HtmlParsingExample {
       println(s"First heading text: ${first.text()}")
     }
 
-    val links     = doc.find("a")
+    val links = doc.find("a")
     val linkArray = links.toArray()
-    println(s"Total links: ${links.size()}, first href: ${linkArray.headOption.map(_.getAttribute("href")).getOrElse("")}")
+    println(
+      s"Total links: ${links.size()}, first href: ${linkArray.headOption.map(_.getAttribute("href")).getOrElse("")}"
+    )
 
     val forms = doc.find("form")
     if (forms.size() > 0) {
@@ -51,4 +53,3 @@ object HtmlParsingExample {
   @JSExportTopLevel("options")
   val options: Options = Options(vus = Some(1), iterations = Some(1))
 }
-
