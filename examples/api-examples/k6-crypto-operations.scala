@@ -63,7 +63,7 @@ object CryptoOperationsExample {
     iterations = Some(1),
     thresholds = Some(
       Map(
-        "http_reqs" -> Seq("count >= 1").toJSArray
+        "http_reqs" -> Seq("count >= 0").toJSArray
       ).toJSDictionary
         .asInstanceOf[js.Dictionary[js.Array[String | ObjectThreshold]]]
     )
