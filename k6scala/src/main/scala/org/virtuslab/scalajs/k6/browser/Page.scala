@@ -34,7 +34,10 @@ import org.virtuslab.scalajs.k6.http.Response
 trait Page extends js.Object {
 
   /** Navigate to the given URL and resolve with the resulting HTTP [[Response]]. */
-  def goto(url: String, options: js.UndefOr[GotoOptions] = js.undefined): js.Promise[Response] =
+  def goto(
+      url: String,
+      options: js.UndefOr[NavigationOptions] = js.undefined
+  ): js.Promise[Response] =
     js.native
 
   /** Reload the current page, optionally controlling timeout and waitUntil state. */
@@ -132,6 +135,13 @@ trait Page extends js.Object {
   def screenshot(
       options: js.UndefOr[ScreenshotOptions] = js.undefined
   ): js.Promise[ArrayBuffer] = js.native
+
+  /**
+   * Creates a [[Locator]] scoped to elements matching the given selector on this page.
+   *
+   * Locators are the recommended way to perform interactions such as click, fill, and check.
+   */
+  def locator(selector: String): Locator = js.native
 }
 
 /**
@@ -161,13 +171,6 @@ object NavigationOptions {
       )
       .asInstanceOf[NavigationOptions]
 }
-
-/**
- * Options for [[Page.goto]] navigation.
- *
- * Alias of [[NavigationOptions]] kept for clarity in the API surface.
- */
-type GotoOptions = NavigationOptions
 
 /**
  * Options for [[Page.waitForNavigation]].
@@ -285,4 +288,3 @@ object ScreenshotOptions {
       )
       .asInstanceOf[ScreenshotOptions]
 }
-
