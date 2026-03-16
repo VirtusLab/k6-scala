@@ -29,10 +29,10 @@ import scala.scalajs.js.JSConverters._
 trait BrowserContext extends js.Object {
 
   /** Creates a new Page in this context and returns it. */
-  def newPage(): js.Promise[js.Any] = js.native
+  def newPage(): js.Promise[Page] = js.native
 
   /** Returns all pages that belong to this context. */
-  def pages(): js.Promise[js.Array[js.Any]] = js.native
+  def pages(): js.Promise[js.Array[Page]] = js.native
 
   /** Closes the context and all of its pages. */
   def close(): js.Promise[Unit] = js.native
@@ -159,4 +159,3 @@ object GrantPermissionsOptions {
       )
       .asInstanceOf[GrantPermissionsOptions]
 }
-

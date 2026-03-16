@@ -182,4 +182,3 @@ object ScreenSize {
       )
       .asInstanceOf[ScreenSize]
 }
-

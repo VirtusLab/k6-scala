@@ -37,12 +37,11 @@ private[browser] object BrowserNative extends js.Object {
   ): js.Promise[BrowserContext] = js.native
 
   /**
-   * Creates a new page in a new [[BrowserContext]] and returns it. The concrete Page facade is
-   * introduced in a later module; for now this is typed as `js.Any`.
+   * Creates a new [[Page]] in a new [[BrowserContext]] and returns it.
    */
   def newPage(
       options: js.UndefOr[BrowserContextOptions] = js.undefined
-  ): js.Promise[js.Any] = js.native
+  ): js.Promise[Page] = js.native
 
   /** Closes the current [[BrowserContext]] and all of its pages. */
   def closeContext(): js.Promise[Unit] = js.native
@@ -74,7 +73,7 @@ object Browser {
 
   def newPage(
       options: Option[BrowserContextOptions] = None
-  ): js.Promise[js.Any] =
+  ): js.Promise[Page] =
     BrowserNative.newPage(options.orUndefined)
 
   def closeContext(): js.Promise[Unit] =
@@ -92,4 +91,3 @@ object Browser {
   def version(): js.Promise[String] =
     BrowserNative.version()
 }
-
