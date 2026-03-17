@@ -79,7 +79,7 @@ jobs:
             --power package examples/api-examples/${{ matrix.example_file }}.scala \
             --js \
             --js-emit-source-maps \
-            --js-module-kind esmodule \
+            --js-module-kind commonjs \
             -f \
             --js-no-opt \
             -o examples/api-examples/${{ matrix.example_file }}.js

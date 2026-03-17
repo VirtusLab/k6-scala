@@ -83,4 +83,3 @@ trait ElementHandle extends js.Object {
       options: js.UndefOr[ScreenshotOptions] = js.undefined
   ): js.Promise[ArrayBuffer] = js.native
 }
-

@@ -29,6 +29,7 @@ libraryDependencies += "com.example" %%% "k6-scala" % "latest.version"
 - ✓ [`k6/data`](https://k6.io/docs/javascript-api/k6-data/) - Data handling
 - ✓ [`k6/options`](https://k6.io/docs/using-k6/k6-options/) - Test configuration
 - ✓ [`k6/timers`](https://k6.io/docs/using-k6/k6-timers/) - Timing utilities
+- ✓ [`k6/secrets`](https://k6.io/docs/javascript-api/k6-secrets/) - Secret management (**CommonJS only** — see note below)
 
 ### Basic Examples
 
@@ -50,6 +51,36 @@ Examples showing how to use `k6-scala` with:
   - Build checks
   - Facade validation
   - Example project tests
+
+---
+## Known Limitations
+
+### `k6/secrets` requires CommonJS module kind
+
+The `k6/secrets` facade only works when the Scala.js output uses **CommonJS** module kind,
+not ESM. This is due to an incompatibility between Scala.js ESM output and k6's runtime:
+
+- Scala.js ESM output always generates `import * as X from "mod"` (namespace imports),
+  then accesses `X.default` for default-export facades.
+- k6's ESM runtime does not correctly populate `namespace.default` for the `k6/secrets`
+  module, causing the import to resolve to `undefined`.
+- With CommonJS, `require("k6/secrets")` correctly exposes the default export through the
+  `__esModule` / `default` convention that Scala.js's `moduleDefault()` helper handles.
+
+Other k6 modules (e.g. `k6/http`, `k6/crypto`) work with both ESM and CommonJS because
+they expose their API as named exports.
+
+**Configuration:**
+
+```scala
+// sbt
+scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+```
+
+```bash
+# scala-cli
+scala-cli --power package example.scala --js --js-module-kind commonjs -o example.js
+```
 
 ---
 ## Development Status

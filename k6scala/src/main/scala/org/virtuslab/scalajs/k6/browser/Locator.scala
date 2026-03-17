@@ -185,4 +185,3 @@ object WaitForOptions {
       )
       .asInstanceOf[WaitForOptions]
 }
-
