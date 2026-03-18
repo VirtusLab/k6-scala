@@ -48,4 +48,3 @@ object RandomUtils {
     def randomString(length: Int, charset: js.UndefOr[String]): String = js.native
   }
 }
-
