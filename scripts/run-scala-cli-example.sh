@@ -17,12 +17,12 @@ pushd "$REPO_ROOT/examples/api-examples" > /dev/null
 scala-cli --power package "${EXAMPLE_NAME}.scala" \
   --js \
   --js-emit-source-maps \
-  --js-module-kind esmodule \
+  --js-module-kind commonjs \
   --js-no-opt \
   -f \
   -o "${EXAMPLE_NAME}.js"
 
-k6 run "${EXAMPLE_NAME}.js"
+k6 run --secret-source=file=file.secret "${EXAMPLE_NAME}.js"
 
 popd > /dev/null
 

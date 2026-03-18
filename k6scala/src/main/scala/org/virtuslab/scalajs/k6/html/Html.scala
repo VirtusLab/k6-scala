@@ -21,6 +21,6 @@ import scala.scalajs.js.annotation._
 
 @js.native
 @JSImport("k6/html", JSImport.Namespace)
-private[html] object Html extends js.Object {
+private[html] object HTML extends js.Object {
   def parseHTML(src: String): Selection = js.native
 }
