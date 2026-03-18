@@ -18,15 +18,15 @@ package org.virtuslab.scalajs.k6
 
 package object jslib {
 
-  /** Facades and utilities for the k6 jslib ecosystem.
-    *
-    * This module targets the `k6-utils` jslib library at version 1.2.0 and
-    * is compiled as a Scala.js ES module so that k6 can execute the generated
-    * JavaScript directly with URL-based imports.
-    *
-    * All public APIs under this package are versioned alongside `k6-scala`, but
-    * their semantics are defined by the corresponding jslib (currently
-    * `k6-utils` 1.2.0).
-    */
+  /**
+   * Facades and utilities for the k6 jslib ecosystem.
+   *
+   * This module targets the `k6-utils` jslib library at version 1.2.0 and
+   * is compiled as a Scala.js ES module so that k6 can execute the generated
+   * JavaScript directly with URL-based imports.
+   *
+   * All public APIs under this package are versioned alongside `k6-scala`, but
+   * their semantics are defined by the corresponding jslib (currently
+   * `k6-utils` 1.2.0).
+   */
 }
-

@@ -1,4 +1,5 @@
 import scala.sys.process._
+import org.scalajs.linker.interface.ModuleKind
 import org.scalajs.linker.interface.ModuleSplitStyle
 
 import sbt.Keys._
@@ -41,6 +42,15 @@ lazy val k6scala: Project =
     .enablePlugins(ScalaJSBundlerPlugin)
     .settings(commonSettings ++ crossCompileSettings("k6scala"): _*)
 
+lazy val k6Jslib: Project =
+  Project(id = "k6-jslib", base = file("k6-jslib"))
+    .enablePlugins(ScalaJSPlugin)
+    .settings(commonSettings ++ crossCompileSettings("k6-jslib"): _*)
+    .settings(
+      moduleName := "k6-jslib",
+      scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.ESModule))
+    )
+
 lazy val publishLocalDev = taskKey[Unit]("Publish local version with dev suffix")
 
 publishLocalDev := {
@@ -64,13 +74,14 @@ publishLocalDev := {
       s
     )
     Project.extract(newState).runTask(k6scala / publishLocal, newState)
+    Project.extract(newState).runTask(k6Jslib / publishLocal, newState)
   }
 }
 
 lazy val root = Project("root", file("."))
   .settings(commonSettings)
-  .dependsOn(k6scala)
-  .aggregate(k6scala)
+  .dependsOn(k6scala, k6Jslib)
+  .aggregate(k6scala, k6Jslib)
 
 def crossCompileSettings(module: String) =
   Seq(
