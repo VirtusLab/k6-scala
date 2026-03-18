@@ -13,6 +13,7 @@ This library enables writing k6 load tests using Scala.js.
 - **Type-safe API**: Full Scala.js facades for core k6 modules
 - **Build Tool Support**: Integration with sbt, scala-cli, and mill
 - **Production Ready**: Used in real-world load testing scenarios
+ - **jslib Support**: Experimental `k6-jslib` Scala.js module targeting `k6-utils` jslib 1.2.0 as an ES module
 
 ## Quick Start
 
@@ -30,6 +31,13 @@ libraryDependencies += "com.example" %%% "k6-scala" % "latest.version"
 - ✓ [`k6/options`](https://k6.io/docs/using-k6/k6-options/) - Test configuration
 - ✓ [`k6/timers`](https://k6.io/docs/using-k6/k6-timers/) - Timing utilities
 - ✓ [`k6/secrets`](https://k6.io/docs/javascript-api/k6-secrets/) - Secret management (**CommonJS only** — see note below)
+
+### `k6-jslib` module (experimental)
+
+The repository also contains a separate Scala.js submodule `k6-jslib`, which is compiled as an
+ES module and provides facades over the k6 jslib ecosystem, starting with [`k6-utils` 1.2.0](https://jslib.k6.io/).
+Scala code importing `org.virtuslab.scalajs.k6.jslib._` is compiled so that the generated JS can be
+consumed directly by k6 with URL-based imports from the jslib CDN.
 
 ### Basic Examples
 
