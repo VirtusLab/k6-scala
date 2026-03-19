@@ -45,6 +45,7 @@ lazy val k6scala: Project =
 lazy val k6Jslib: Project =
   Project(id = "k6-jslib", base = file("k6-jslib"))
     .enablePlugins(ScalaJSPlugin)
+    .dependsOn(k6scala)
     .settings(commonSettings ++ crossCompileSettings("k6-jslib"): _*)
     .settings(
       moduleName := "k6-jslib",
