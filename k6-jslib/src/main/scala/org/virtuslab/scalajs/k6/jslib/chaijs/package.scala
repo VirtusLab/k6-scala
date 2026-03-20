@@ -14,20 +14,9 @@
  * limitations under the License.
  */
 
-package org.virtuslab.scalajs.k6
+package org.virtuslab.scalajs.k6.jslib
 
-import scala.collection.Seq
-import org.virtuslab.scalajs.k6.data.SharedArray
-
-/** Shared read-only data ([`k6/data`](https://grafana.com/docs/k6/latest/javascript-api/k6-data/)). */
-package object data {
-
-  /**
-   * Scala-friendly helper for constructing a k6 SharedArray from a Scala `Seq[A]`.
-   *
-   * The initializer is evaluated once during the k6 init stage and its elements are shared
-   * across all VUs via a k6 `SharedArray`.
-   */
-  def sharedArrayFromSeq[A](name: String)(init: => Seq[A]): SharedArray[A] =
-    SharedArray.fromSeq(name)(init)
-}
+/**
+ * Facades for `k6-chaijs` (BDD assertion DSL) from the `jslib.k6.io` CDN.
+ */
+package object chaijs {}

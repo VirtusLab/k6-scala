@@ -33,7 +33,10 @@ import org.virtuslab.scalajs.k6.http.Response
 @js.native
 trait Page extends js.Object {
 
-  /** Navigate to the given URL and resolve with the resulting HTTP [[Response]]. */
+  /**
+   * Navigate to the given URL and resolve with the resulting HTTP
+   * [[org.virtuslab.scalajs.k6.http.Response]].
+   */
   def goto(
       url: String,
       options: js.UndefOr[NavigationOptions] = js.undefined
@@ -63,7 +66,7 @@ trait Page extends js.Object {
 
   /**
    * Waits for a navigation to complete according to the specified options and resolves with the
-   * navigation [[Response]].
+   * navigation [[org.virtuslab.scalajs.k6.http.Response]].
    */
   def waitForNavigation(
       options: js.UndefOr[WaitForNavigationOptions] = js.undefined
@@ -121,7 +124,7 @@ trait Page extends js.Object {
    * the result.
    *
    * The concrete handle type is introduced in a later module and is currently modelled as
-   * [[js.Any]].
+   * `js.Any`.
    */
   def evaluateHandle(
       expression: String,
@@ -130,7 +133,8 @@ trait Page extends js.Object {
 
   /**
    * Captures a screenshot of the page. When `path` is specified in [[ScreenshotOptions]], k6 saves
-   * the screenshot to that path and also returns the binary image data as an [[ArrayBuffer]].
+   * the screenshot to that path and also returns the binary image data as a
+   * `scala.scalajs.js.typedarray.ArrayBuffer`.
    */
   def screenshot(
       options: js.UndefOr[ScreenshotOptions] = js.undefined

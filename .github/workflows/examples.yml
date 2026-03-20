@@ -43,6 +43,7 @@ jobs:
           # "k6-grpc-streaming", # TODO: Enable when mock server is implemented
           "k6-grpc",
           "k6-html-forms",
+          "k6-html-parsing",
           "k6-json-responses",
           "k6-ramp-vus-scenario",
           "k6-rate-metrics",
@@ -86,6 +87,53 @@ jobs:
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
       # Examples export options with vus=1 (or custom scenarios); CLI flags shorten runs in CI.
+      - name: Run local k6 test
+        uses: grafana/run-k6-action@v1
+        with:
+          debug: true
+          flags: --vus 1 --duration 1s
+          path: ./examples/api-examples/${{ matrix.example_file }}.js
+
+  # k6-jslib facades use ES modules and URL imports; build with --js-module-kind esmodule.
+  scala-cli-api-examples-esm:
+    needs: publish-local
+    strategy:
+      fail-fast: false
+      matrix:
+        example_file: [
+          "k6-jslib-utils",
+          "k6-httpx-sessions",
+          "k6-chaijs-assertions"
+        ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download k6-scala local artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: ivy2-local-k6-scala
+          path: ~/.ivy2/local/org.virtuslab/
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v3.1
+      - uses: coursier/cache-action@v6.4
+      - uses: VirtusLab/scala-cli-setup@v1.12
+        with:
+          jvm: temurin:21
+          scala-cli-version: 1.12.3
+      - name: Build JS with scala-cli (ES module)
+        run: |
+          scala-cli \
+            --power package examples/api-examples/${{ matrix.example_file }}.scala \
+            --js \
+            --js-emit-source-maps \
+            --js-module-kind esmodule \
+            -f \
+            --js-no-opt \
+            -o examples/api-examples/${{ matrix.example_file }}.js
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
       - name: Run local k6 test
         uses: grafana/run-k6-action@v1
         with:

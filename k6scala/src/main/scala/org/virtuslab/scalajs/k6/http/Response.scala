@@ -27,12 +27,13 @@ trait Response extends js.Object {
   def headers: js.Dictionary[String] = js.native
 
   /**
-   * Parses the response body as HTML and returns a [[Selection]] wrapping the entire document.
+   * Parses the response body as HTML and returns a [[org.virtuslab.scalajs.k6.html.Selection]]
+   * wrapping the entire document.
    *
    * Equivalent to `parseHTML(response.body)`.
    *
    * @return
-   *   a [[Selection]] representing the parsed HTML
+   *   a [[org.virtuslab.scalajs.k6.html.Selection]] representing the parsed HTML
    * @see
    *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-html/ k6
    *   Response.html()]]
@@ -40,14 +41,15 @@ trait Response extends js.Object {
   def html(): Selection = js.native
 
   /**
-   * Parses the response body as HTML and returns a [[Selection]] scoped to the given CSS selector.
+   * Parses the response body as HTML and returns a [[org.virtuslab.scalajs.k6.html.Selection]]
+   * scoped to the given CSS selector.
    *
    * Equivalent to `parseHTML(response.body).find(selector)`.
    *
    * @param selector
    *   a CSS selector expression
    * @return
-   *   a [[Selection]] containing only the matched elements
+   *   a [[org.virtuslab.scalajs.k6.html.Selection]] containing only the matched elements
    */
   def html(selector: String): Selection = js.native
 
@@ -93,8 +95,7 @@ trait Response extends js.Object {
    * Throws a k6 runtime error if no `<form>` element is found.
    *
    * @see
-   *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-submitform/
-   *   k6 Response.submitForm()]]
+   *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-submitform/ k6 Response.submitForm()]]
    */
   def submitForm(): Response = js.native
 
@@ -105,8 +106,7 @@ trait Response extends js.Object {
    * @param params
    *   options controlling form selection and field overrides
    * @see
-   *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-submitform/
-   *   k6 Response.submitForm()]]
+   *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-http/response/response-submitform/ k6 Response.submitForm()]]
    */
   def submitForm(params: SubmitFormParams): Response = js.native
 

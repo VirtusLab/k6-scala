@@ -18,6 +18,9 @@ package org.virtuslab.scalajs.k6
 
 import org.virtuslab.scalajs.k6.websockets.{MessageEvent, ReadyState, WebSocket, WebSocketParams}
 
+/**
+ * Browser-like WebSocket client ([`k6/experimental/websockets`](https://grafana.com/docs/k6/latest/javascript-api/k6-experimental/websockets/)).
+ */
 package object websockets {
 
   /**

@@ -23,6 +23,9 @@ import org.virtuslab.scalajs.k6.crypto.OutputEncoding
 import org.virtuslab.scalajs.k6.crypto.Crypto
 import org.virtuslab.scalajs.k6.crypto.Hasher
 
+/**
+ * Hashing and HMAC from [`k6/crypto`](https://grafana.com/docs/k6/latest/javascript-api/k6-crypto/).
+ */
 package object crypto {
 
   private def toJs(algorithm: HashAlgorithm): String =

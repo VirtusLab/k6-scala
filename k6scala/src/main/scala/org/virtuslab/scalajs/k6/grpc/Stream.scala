@@ -21,8 +21,8 @@ import scala.scalajs.js.JSConverters._
 
 /**
  * Native gRPC Stream instance (k6/net/grpc). Created with `new Stream(client, url, params?)`.
- * Use the Scala [[Stream]] wrapper and [[org.virtuslab.scalajs.k6.grpc.package#Stream Stream()]]
- * from the package object. The client must be connected before creating a stream.
+ * Use the Scala [[org.virtuslab.scalajs.k6.grpc.Stream]] wrapper and `Stream()` from the package
+ * object. The client must be connected before creating a stream.
  *
  * Events: "data" (server sent a message), "error" (error occurred, stream closed), "end" (server
  * closed the incoming stream). Multiple handlers for the same event all fire.
@@ -37,7 +37,7 @@ trait GrpcStreamNative extends js.Object {
 
   /**
    * Registers a handler for a stream event. Events: "data", "error", "end". Prefer typed
-   * wrappers (onData, onError, onEnd) from the Scala [[Stream]] class.
+   * wrappers (onData, onError, onEnd) from the Scala [[org.virtuslab.scalajs.k6.grpc.Stream]] class.
    */
   def on(event: String, handler: js.Function): Unit = js.native
 

@@ -25,6 +25,10 @@ import org.virtuslab.scalajs.k6.ws.WSNative
 import org.virtuslab.scalajs.k6.ws.WsParams
 import org.virtuslab.scalajs.k6.ws.Socket
 
+/**
+ * Legacy WebSocket API ([`k6/ws`](https://grafana.com/docs/k6/latest/javascript-api/k6-ws/)):
+ * [[connect]] and [[Socket]] helpers.
+ */
 package object ws {
 
   /**

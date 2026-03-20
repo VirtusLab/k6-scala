@@ -16,21 +16,17 @@
 
 package org.virtuslab.scalajs.k6
 
-import scala.scalajs.js
-import scala.scalajs.js.JSConverters._
-
-/** Custom metrics: Counter, Gauge, Rate, Trend ([`k6/metrics`](https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/)). */
-package object metrics {
+package object jslib {
 
   /**
-   * Shared helper for converting optional Scala tag maps into the JS representation expected by
-   * k6 metric constructors and `add` methods.
+   * Facades and utilities for the k6 jslib ecosystem.
    *
-   * All custom metric wrappers in this package should use this helper to keep the Scala → JS
-   * boundary consistent.
+   * This module targets the `k6-utils` jslib library at version 1.2.0 and
+   * is compiled as a Scala.js ES module so that k6 can execute the generated
+   * JavaScript directly with URL-based imports.
+   *
+   * All public APIs under this package are versioned alongside `k6-scala`, but
+   * their semantics are defined by the corresponding jslib (currently
+   * `k6-utils` 1.2.0).
    */
-  private[metrics] def tagsToJS(
-      tags: Option[Map[String, String]]
-  ): js.UndefOr[js.Dictionary[String]] =
-    tags.map(_.toJSDictionary).orUndefined
 }
