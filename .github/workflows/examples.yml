@@ -14,7 +14,7 @@ jobs:
   publish-local:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup Scala
@@ -59,7 +59,7 @@ jobs:
         ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
@@ -107,7 +107,7 @@ jobs:
         ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
@@ -145,7 +145,7 @@ jobs:
     needs: publish-local
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
@@ -170,7 +170,7 @@ jobs:
     needs: publish-local
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Download k6-scala local artifacts
@@ -194,7 +194,7 @@ jobs:
   #   needs: publish-local
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v6
   #       with:
   #         fetch-depth: 0
   #     - name: Download k6-scala local artifacts

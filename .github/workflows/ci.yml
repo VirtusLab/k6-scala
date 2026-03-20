@@ -21,7 +21,7 @@ jobs:
         scalaversion: ["2.12.21", "2.13.16", "3.3.6", "3.5.0"]
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
