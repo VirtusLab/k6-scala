@@ -19,6 +19,7 @@ package org.virtuslab.scalajs.k6
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
 
+/** Custom metrics: Counter, Gauge, Rate, Trend ([`k6/metrics`](https://grafana.com/docs/k6/latest/javascript-api/k6-metrics/)). */
 package object metrics {
 
   /**

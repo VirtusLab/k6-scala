@@ -16,4 +16,8 @@
 
 package org.virtuslab.scalajs.k6
 
+/**
+ * Test configuration: [[org.virtuslab.scalajs.k6.options.Options]], [[Scenario]], [[Stage]],
+ * thresholds, executors, and related types for `export const options` in k6.
+ */
 package object options {}

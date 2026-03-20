@@ -20,8 +20,8 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 /**
- * Native k6/net/grpc namespace. Provides the [[Client]] constructor. Use [[Client]]() to create
- * a gRPC client; use [[StatusConstants]] for status code comparison.
+ * Native k6/net/grpc namespace. Provides the [[org.virtuslab.scalajs.k6.grpc.Client]] constructor.
+ * Use `Client()` to create a gRPC client; use [[StatusConstants]] for status code comparison.
  *
  * @see
  *   [[https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/ k6 net/grpc]]
@@ -30,9 +30,9 @@ import scala.scalajs.js.annotation.JSImport
 @JSImport("k6/net/grpc", JSImport.Namespace)
 private[grpc] object GrpcNative extends js.Object {
 
-  /** Constructor for the gRPC Client. Use [[Client]]() from the package object in Scala code. */
+  /** Constructor for the gRPC Client. Use `Client()` from the package object in Scala code. */
   val Client: js.Dynamic = js.native
 
-  /** Constructor for the gRPC Stream. Use [[Stream.apply]] in Scala code. */
+  /** Constructor for the gRPC Stream. Use [[org.virtuslab.scalajs.k6.grpc.Stream]] in Scala code. */
   val Stream: js.Dynamic = js.native
 }

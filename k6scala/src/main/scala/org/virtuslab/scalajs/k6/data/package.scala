@@ -19,6 +19,7 @@ package org.virtuslab.scalajs.k6
 import scala.collection.Seq
 import org.virtuslab.scalajs.k6.data.SharedArray
 
+/** Shared read-only data ([`k6/data`](https://grafana.com/docs/k6/latest/javascript-api/k6-data/)). */
 package object data {
 
   /**

@@ -20,6 +20,10 @@ import scala.scalajs.js
 import scala.scalajs.js.typedarray.ArrayBuffer
 import scala.scalajs.js.typedarray.ArrayBufferView
 
+/**
+ * Subset of the global Web Crypto API exposed to k6 scripts: `getRandomValues`, `randomUUID`,
+ * `subtle`, and convenience encrypt/decrypt/digest/key helpers.
+ */
 package object webcrypto {
 
   def getRandomValues[T <: ArrayBufferView](array: T): T =

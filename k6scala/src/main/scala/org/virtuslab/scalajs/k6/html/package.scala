@@ -16,6 +16,7 @@
 
 package org.virtuslab.scalajs.k6
 
+/** HTML parsing and DOM-style selection ([`k6/html`](https://grafana.com/docs/k6/latest/javascript-api/k6-html/)). */
 package object html {
 
   /**

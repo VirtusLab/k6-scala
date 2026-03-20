@@ -67,4 +67,3 @@ final class Expectation private[chaijs] (private val native: js.Dynamic) {
   def toBeWithin(min: Int, max: Int): Unit =
     toBeWithin(min.toDouble, max.toDouble)
 }
-

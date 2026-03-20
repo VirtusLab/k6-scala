@@ -18,6 +18,7 @@ package org.virtuslab.scalajs.k6
 
 import scala.concurrent.duration.FiniteDuration
 
+/** Wrappers for [`k6/timers`](https://grafana.com/docs/k6/latest/javascript-api/k6-timers/) using `FiniteDuration`. */
 package object timers {
 
   def setTimeout(callback: => Unit, delay: FiniteDuration): TimerId =

@@ -31,9 +31,12 @@ final class Matchers private[chaijs] (private val native: js.Dynamic) {
    * invoke with the assertion object as `this` (same as `expect(x).to.equal(y)` in JS).
    */
   def equal(expected: js.Any): Unit = {
-    val equalFn = native.selectDynamic("to").selectDynamic("equal").asInstanceOf[
-      js.ThisFunction1[js.Any, js.Any, js.Any]
-    ]
+    val equalFn = native
+      .selectDynamic("to")
+      .selectDynamic("equal")
+      .asInstanceOf[
+        js.ThisFunction1[js.Any, js.Any, js.Any]
+      ]
     equalFn(native, expected)
     ()
   }
@@ -49,4 +52,3 @@ final class Matchers private[chaijs] (private val native: js.Dynamic) {
     ()
   }
 }
-

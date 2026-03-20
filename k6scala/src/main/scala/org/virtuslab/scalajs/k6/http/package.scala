@@ -24,6 +24,11 @@ import org.virtuslab.scalajs.converters.FromJSPromise
 import org.virtuslab.scalajs.k6.http.AsyncRequest
 import org.virtuslab.scalajs.k6.http.Batch._
 
+/**
+ * HTTP client API mirroring [`k6/http`](https://grafana.com/docs/k6/latest/javascript-api/k6-http/):
+ * verbs, [[org.virtuslab.scalajs.k6.http.Params]], [[org.virtuslab.scalajs.k6.http.Response]], batch,
+ * cookies, and file upload helpers.
+ */
 package object http {
   type Body = String | js.Object | ArrayBuffer
   type BodyOpt = js.UndefOr[Body]

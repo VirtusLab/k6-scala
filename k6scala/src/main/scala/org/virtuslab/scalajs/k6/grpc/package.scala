@@ -16,9 +16,16 @@
 
 package org.virtuslab.scalajs.k6
 
+/**
+ * Facades for [`k6/net/grpc`](https://grafana.com/docs/k6/latest/javascript-api/k6-net-grpc/):
+ * [[org.virtuslab.scalajs.k6.grpc.Client]], streaming helpers, and gRPC status codes.
+ */
 package object grpc {
 
-  /** Alias for [[StatusConstants]] status codes; e.g. use `grpc.StatusOK` like in k6 JS. For streaming use [[Stream]].apply(client, url, params). */
+  /**
+   * Alias for [[StatusConstants]] status codes; e.g. use `grpc.StatusOK` like in k6 JS. For
+   * streaming see [[org.virtuslab.scalajs.k6.grpc.Stream]].
+   */
   val StatusOK: Int = StatusConstants.OK
   val StatusCanceled: Int = StatusConstants.Canceled
   val StatusUnknown: Int = StatusConstants.Unknown

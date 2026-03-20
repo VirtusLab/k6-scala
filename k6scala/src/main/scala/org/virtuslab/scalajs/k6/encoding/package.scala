@@ -16,6 +16,7 @@
 
 package org.virtuslab.scalajs.k6
 
+/** Base64 helpers from [`k6/encoding`](https://grafana.com/docs/k6/latest/javascript-api/k6-encoding/). */
 package object encoding {
 
   def encoding(

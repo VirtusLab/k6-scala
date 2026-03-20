@@ -21,8 +21,8 @@ import scala.scalajs.js.JSConverters._
 
 /**
  * Native gRPC Client instance (k6/net/grpc). Created via the namespace constructor; use the Scala
- * [[Client]] wrapper and [[org.virtuslab.scalajs.k6.grpc.package#Client Client()]] from the
- * package object for idiomatic usage.
+ * [[org.virtuslab.scalajs.k6.grpc.Client]] wrapper and `Client()` from the package object for
+ * idiomatic usage.
  *
  * Must call [[load]] (during init phase) and [[connect]] before [[invoke]] or [[asyncInvoke]].
  * Invoking before connect throws a k6 runtime error.

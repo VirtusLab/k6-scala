@@ -1,5 +1,5 @@
 //> using scala "3.5.0"
-//> using jsVersion "1.18.1"
+//> using jsVersion "1.20.2"
 //> using platform scala-js
 //> using dep "org.virtuslab::k6-scala::dev"
 
