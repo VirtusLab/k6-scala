@@ -174,7 +174,8 @@ object Session {
 
   @js.native
   @JSImport("https://jslib.k6.io/httpx/0.1.0/index.js", "Httpx")
-  private[httpx] class HttpxNative(opts: js.UndefOr[SessionOptions] = js.undefined) extends js.Object {
+  private[httpx] class HttpxNative(opts: js.UndefOr[SessionOptions] = js.undefined)
+      extends js.Object {
     def setBaseUrl(baseURL: String): Unit = js.native
     def addHeader(key: String, value: String): Unit = js.native
     def addHeaders(headers: js.Dictionary[String]): Unit = js.native
@@ -197,13 +198,19 @@ object Session {
     ): js.Promise[Response] = js.native
 
     def get(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def post(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
+    def post(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
     def put(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def patch(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def delete(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def options(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def head(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
-    def trace(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response = js.native
+    def patch(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
+    def delete(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
+    def options(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
+    def head(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
+    def trace(url: Url, body: js.UndefOr[js.Any], params: js.UndefOr[js.Object]): Response =
+      js.native
 
     def batch(
         requests: js.Array[js.Any],
