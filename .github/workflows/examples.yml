@@ -153,7 +153,7 @@ jobs:
         with:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
-      - uses: coursier/setup-action@v2
+      - uses: coursier/setup-action@v3
         with:
           jvm: temurin:21
           apps: mill
