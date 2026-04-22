@@ -70,7 +70,7 @@ jobs:
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
       - uses: coursier/cache-action@v8.1
-      - uses: VirtusLab/scala-cli-setup@v1.12
+      - uses: VirtusLab/scala-cli-setup@v1.13
         with:
           jvm: temurin:21
           scala-cli-version: 1.12.3
@@ -118,7 +118,7 @@ jobs:
       - name: Setup Scala
         uses: japgolly/setup-everything-scala@v3.1
       - uses: coursier/cache-action@v8.1
-      - uses: VirtusLab/scala-cli-setup@v1.12
+      - uses: VirtusLab/scala-cli-setup@v1.13
         with:
           jvm: temurin:21
           scala-cli-version: 1.12.3
