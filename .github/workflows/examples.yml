@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Scala
-        uses: japgolly/setup-everything-scala@v3.1
+        uses: japgolly/setup-everything-scala@v4.1
       - name: Publish k6-scala locally for all Scala versions
         run: sbt publishLocalDev
       - name: Upload ivy2 local artifacts
@@ -68,7 +68,7 @@ jobs:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
       - name: Setup Scala
-        uses: japgolly/setup-everything-scala@v3.1
+        uses: japgolly/setup-everything-scala@v4.1
       - uses: coursier/cache-action@v8.1
       - uses: VirtusLab/scala-cli-setup@v1.13
         with:
@@ -116,7 +116,7 @@ jobs:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
       - name: Setup Scala
-        uses: japgolly/setup-everything-scala@v3.1
+        uses: japgolly/setup-everything-scala@v4.1
       - uses: coursier/cache-action@v8.1
       - uses: VirtusLab/scala-cli-setup@v1.13
         with:
@@ -179,7 +179,7 @@ jobs:
           name: ivy2-local-k6-scala
           path: ~/.ivy2/local/org.virtuslab/
       - name: Setup Scala
-        uses: japgolly/setup-everything-scala@v3.1
+        uses: japgolly/setup-everything-scala@v4.1
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
       - name: Build simulation file
@@ -203,7 +203,7 @@ jobs:
   #         name: ivy2-local-k6-scala
   #         path: ~/.ivy2/local/org.virtuslab/
   #     - name: Setup Scala
-  #       uses: japgolly/setup-everything-scala@v3.1
+  #       uses: japgolly/setup-everything-scala@v4.1
   #     - name: Setup K6
   #       uses: grafana/setup-k6-action@v1
   #     - name: Build and run K6 simulation
