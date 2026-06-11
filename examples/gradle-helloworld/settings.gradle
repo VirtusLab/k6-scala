@@ -3,15 +3,30 @@ pluginManagement {
     mavenLocal()
     mavenCentral()
     gradlePluginPortal()
-    mavenLocal()
   }
+}
+
+plugins {
+  id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
 dependencyResolutionManagement {
   repositories {
+    ivy {
+      name = 'ivyLocal'
+      url = uri("${System.getProperty('user.home')}/.ivy2/local")
+      patternLayout {
+        artifact '[organisation]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext]'
+      }
+      metadataSources {
+        artifact()
+      }
+      content {
+        includeGroup 'org.virtuslab'
+      }
+    }
     mavenLocal()
     mavenCentral()
-    mavenLocal()
   }
 }
 

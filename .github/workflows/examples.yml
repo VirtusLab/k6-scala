@@ -189,23 +189,22 @@ jobs:
         run: sbt runK6test
         working-directory: ./examples/sbt-helloworld
 
-  # TODO: Enable when build with dev version is fixed
-  # gradle-example:
-  #   needs: publish-local
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v6
-  #       with:
-  #         fetch-depth: 0
-  #     - name: Download k6-scala local artifacts
-  #       uses: actions/download-artifact@v8
-  #       with:
-  #         name: ivy2-local-k6-scala
-  #         path: ~/.ivy2/local/org.virtuslab/
-  #     - name: Setup Scala
-  #       uses: japgolly/setup-everything-scala@v4.1
-  #     - name: Setup K6
-  #       uses: grafana/setup-k6-action@v1
-  #     - name: Build and run K6 simulation
-  #       run: ./gradlew :helloworld:runK6test
-  #       working-directory: ./examples/gradle-helloworld
+  gradle-example:
+    needs: publish-local
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Download k6-scala local artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: ivy2-local-k6-scala
+          path: ~/.ivy2/local/org.virtuslab/
+      - name: Setup Scala
+        uses: japgolly/setup-everything-scala@v4.1
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
+      - name: Build and run K6 simulation
+        run: ./gradlew :helloworld:runK6test
+        working-directory: ./examples/gradle-helloworld

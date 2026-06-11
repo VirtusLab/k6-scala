@@ -4,10 +4,6 @@ plugins {
 
 scala.scalaVersion = scalaVersion
 
-import org.podval.tools.scalajsplugin.ScalaBackendExtension
-final ScalaBackendExtension scalaVersion = scalaBackend
-final String scalaJsVersion = '1.18.1'
-
 link {
   optimization     = 'Fast'
   moduleKind       = 'ESModule'
@@ -16,9 +12,8 @@ link {
 }
 
 dependencies {
-  implementation  "org.scala-js:scalajs-library_${scalaVersion.binary2}:$scalaJsVersion"
-  scalajs         "org.scala-js:scalajs-linker_${scalaVersion.binary2}:$scalaJsVersion"
-  implementation("org.virtuslab:k6-scala_3:dev")
+  implementation scalaBackend.scalaDependency('org.scala-js', 'scalajs-library', scalaJsLibraryVersion, { it.scala2().jvm() })
+  implementation scalaBackend.scalaDependency('org.virtuslab', 'k6-scala', k6ScalaVersion)
 }
 
 group = 'example'
@@ -29,25 +24,24 @@ subprojects {
   version = rootProject.version
 }
 
+tasks.register('runK6test') {
+  group = 'application'
+  description = 'Build and run k6 with the Scala.js output'
 
-tasks.register("runK6test") {
-  group = "application"
-  description = "Build and run k6 with the Scala.js output"
-
-  dependsOn("link") // or whatever task produces your final JS
+  dependsOn('link')
 
   doLast {
-    def jsOutput = file("$buildDir/tmp/link/js/main.js")
+    def jsOutput = layout.buildDirectory.file('tmp/link/js/main.js').get().asFile
     println "Using JS output: ${jsOutput.absolutePath}"
-    println "Running k6 test..."
-    def processBuilder = new ProcessBuilder("k6", "run", jsOutput.absolutePath)
+    println 'Running k6 test...'
+    def processBuilder = new ProcessBuilder('k6', 'run', jsOutput.absolutePath)
     processBuilder.redirectErrorStream(true)
     def process = processBuilder.start()
-      process.inputStream.withReader { reader ->
-        reader.eachLine { line ->
-          logger.lifecycle(line)
-        }
+    process.inputStream.withReader { reader ->
+      reader.eachLine { line ->
+        logger.lifecycle(line)
       }
+    }
     def exitCode = process.waitFor()
     if (exitCode != 0) {
       throw new GradleException("k6 failed with exit code $exitCode")
